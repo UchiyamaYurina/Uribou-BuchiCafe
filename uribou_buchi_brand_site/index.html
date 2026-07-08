@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ウリ坊とぶちのカフェ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+  <div class="loading" aria-hidden="true">
+    <img src="loading.svg" alt="">
+  </div>
+
+  <header class="site-header">
+    <a class="header-logo" href="#top" aria-label="トップへ戻る">
+      <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
+    <label class="menu-button" for="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="#about">About</a>
+      <a href="#piggies">Piggies</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#access">Access</a>
+      <a class="reserve-link" href="#reserve">Reserve</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <video class="hero-video" src="hero-pig.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-copy">
+        <p class="hero-label">Uribou & Buchi Cafe</p>
+        <h1>ほっと一息、ぶたっと一息。</h1>
+        <p class="hero-sub">Every Day, Piggy Day.</p>
+        <a class="scroll-link" href="#about">Scroll</a>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="section-inner narrow">
+        <p class="section-kicker">Concept</p>
+        <h2>ごろごろ、のんびり、幸せ。</h2>
+        <p>
+          忙しい毎日に、ちょっとひと休み。気ままな2匹の子ぶたが、
+          お昼寝をしたり、時々お客様のそばに寄り添ったり。
+        </p>
+        <p>
+          「なんとなくぼんやり過ごす時間も、大切な時間。」
+          そんな気持ちを思い出せる場所です。
+        </p>
+      </div>
+    </section>
+
+    <section id="piggies" class="section piggies-section">
+      <div class="section-inner">
+        <p class="section-kicker">Piggies</p>
+        <h2>2匹の子ぶたたち</h2>
+
+        <div class="piggy-cards">
+          <article class="piggy-card">
+            <div class="piggy-icon">🐗</div>
+            <h3>ウリ坊</h3>
+            <p>ちょっぴりやんちゃ。でも、ふかふかの場所を見つけるとすぐにお昼寝。</p>
+          </article>
+
+          <article class="piggy-card">
+            <div class="piggy-icon">🐷</div>
+            <h3>ぶち</h3>
+            <p>マイペースでのんびり屋さん。お客様のそばで、ゆったり過ごすのが好き。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section gallery-section">
+      <div class="section-inner">
+        <p class="section-kicker">Gallery</p>
+        <h2>のんびり流れる、カフェの時間。</h2>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">Nap Time</div>
+          <div class="gallery-item">Coffee</div>
+          <div class="gallery-item">Piggy Day</div>
+          <div class="gallery-item">Slow Cafe</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="access" class="section access-section">
+      <div class="section-inner access-grid">
+        <div>
+          <p class="section-kicker">Access</p>
+          <h2>カフェ情報</h2>
+          <dl class="info-list">
+            <div>
+              <dt>営業時間</dt>
+              <dd>11:00 - 18:00</dd>
+            </div>
+            <div>
+              <dt>定休日</dt>
+              <dd>水曜日</dd>
+            </div>
+            <div>
+              <dt>住所</dt>
+              <dd>北海道のどこか、のんびりした場所</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="map-placeholder">
+          <span>MAP</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserve" class="section reserve-section">
+      <div class="section-inner narrow">
+        <p class="section-kicker">Reserve</p>
+        <h2>ぶたっと一息、しに来ませんか。</h2>
+        <p>2匹のペースを大切にしながら、ゆっくり過ごせる時間をご用意しています。</p>
+        <a class="reserve-button" href="mailto:example@example.com">予約する</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
+    <small>&copy; Uribou & Buchi Cafe</small>
+  </footer>
+</body>
+</html>
