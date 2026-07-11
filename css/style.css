@@ -629,6 +629,7 @@ a {
     height: 76px;
     padding: 16px 20px;
   }
+
   .hero {
     width: 100%;
     min-height: 100svh;
@@ -644,7 +645,7 @@ a {
     object-position: center;
     display: block;
   }
-}
+
   .header-logo {
     width: 142px;
   }
@@ -675,7 +676,7 @@ a {
     transition: transform .3s ease;
   }
 
-  .menu-toggle:checked~.site-nav {
+  .menu-toggle:checked ~ .site-nav {
     transform: translateY(0);
   }
 
