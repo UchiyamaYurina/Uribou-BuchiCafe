@@ -369,7 +369,7 @@ a {
   letter-spacing: .06em;
 }
 
-. piggies-section,
+.piggies-section,
 .access-section {
   background: #fffaf4;
 }
@@ -634,7 +634,7 @@ a {
     min-height: 100svh;
     overflow: hidden;
   }
-  
+
   .hero-video {
     inset: 0;
     width: 100%;
@@ -693,7 +693,7 @@ a {
     padding: 130px 22px 64px;
   }
 
-  . section {
+  .section {
     padding: 84px 22px;
   }
 
@@ -705,7 +705,7 @@ a {
     grid-template-columns: 1fr;
   }
 
-  . gallery-grid {
+  .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
