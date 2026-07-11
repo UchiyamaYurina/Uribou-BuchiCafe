@@ -23,6 +23,9 @@ body {
   font-family: "Noto Serif JP", serif;
   font-weight: 300;
   line-height: 1.8;
+  width: 100%;
+  overflow-x: hidden;
+
 }
 
 h1,
@@ -147,6 +150,7 @@ a {
 .page-illusts {
   position: absolute;
   inset: 0;
+  width: 100%;
   z-index: 5;
   pointer-events: none;
   overflow: hidden;
@@ -155,6 +159,7 @@ a {
 .float-illust {
   position: absolute;
   width: 300px;
+  max-width: none;
   pointer-events: none;
   opacity: 0.85;
   animation: float 8s ease-in-out infinite;
