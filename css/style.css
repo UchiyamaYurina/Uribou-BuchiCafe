@@ -153,7 +153,8 @@ a {
   width: 100%;
   z-index: 5;
   pointer-events: none;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .float-illust {
