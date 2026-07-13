@@ -326,7 +326,7 @@ a {
 }
 
 .section {
-  padding: 112px 28px;
+  padding: 90px 28px;
 }
 
 .section-inner {
@@ -606,6 +606,63 @@ a {
   letter-spacing: .08em;
 }
 
+/* FAQ
+----------------------------------- */
+.faq-section {
+  background: #fffaf4;
+}
+
+.faq-list {
+  margin: 40px 0 0;
+}
+
+.faq-item {
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(90, 63, 47, 0.16);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(90, 63, 47, 0.16);
+}
+
+.faq-item dt,
+.faq-item dd {
+  position: relative;
+  margin: 0;
+  padding-left: 42px;
+  text-align: left;
+}
+
+.faq-item dt {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.faq-item dd {
+  margin-top: 16px;
+  color: var(--brown-soft);
+}
+
+.faq-item dt::before,
+.faq-item dd::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--sage);
+  font-size: 20px;
+}
+
+.faq-item dt::before {
+  content: "Q.";
+}
+
+.faq-item dd::before {
+  content: "A.";
+}
+
+
+/* Footer
+----------------------------------- */
 .site-footer {
   display: grid;
   place-items: center;
@@ -696,7 +753,7 @@ a {
   }
 
   .section {
-    padding: 84px 22px;
+    padding: 70px 22px;
   }
 
   .piggy-cards,
@@ -763,4 +820,14 @@ a {
     top: 3450px;
     right: -50px;
   }
+
+    .faq-item {
+    padding: 24px 0;
+  }
+
+  .faq-item dt,
+  .faq-item dd {
+    padding-left: 36px;
+  }
+
 }
