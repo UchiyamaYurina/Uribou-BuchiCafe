@@ -588,6 +588,16 @@ a {
   display: block;
 }
 
+/* reserve
+----------------------------------- */
+
+.reserve-section,
+.faq-section,
+.visit-notice-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
 .reserve-section {
   text-align: center;
 }
@@ -734,7 +744,7 @@ a {
     transition: transform .3s ease;
   }
 
-  .menu-toggle:checked ~ .site-nav {
+  .menu-toggle:checked~.site-nav {
     transform: translateY(0);
   }
 
@@ -743,9 +753,28 @@ a {
     border-bottom: 1px solid rgba(90, 63, 47, .12);
   }
 
+  .reserve-section,
+  .faq-section,
+  .visit-notice-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .page-hero {
+    padding: 110px 22px 44px;
+  }
+
   .reserve-link {
     margin-top: 16px;
     text-align: center;
+  }
+
+  .faq-list {
+    margin-top: 28px;
+  }
+
+  .faq-item {
+    padding: 22px 0;
   }
 
   .page-hero {
@@ -821,7 +850,7 @@ a {
     right: -50px;
   }
 
-    .faq-item {
+  .faq-item {
     padding: 24px 0;
   }
 
