@@ -425,11 +425,28 @@ a {
   filter: saturate(.92);
 }
 
+.piggy-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.piggy-name h2 {
+  margin: 0;
+}
+
+.piggy-name-illust {
+  display: block;
+  width: 56px;
+  height: auto;
+}
+
 .piggy-icon {
-  font-size: 42px;
-
-
-  margin-bottom: 12px;
+  display: block;
+  width: 80px;
+  height: auto;
+  margin: 0 0 12px;
 }
 
 .piggy-card h3 {
