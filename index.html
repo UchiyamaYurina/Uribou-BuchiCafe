@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <section id="about" class="section about-section">
+    <section id="about" class="section about-section section-reveal">
       <div class="section-inner narrow">
         <p class="section-kicker">Concept</p>
         <h2>ごろごろ、のんびり、幸せ。</h2>
@@ -91,19 +91,35 @@
         <h2>2匹の子ぶたたち</h2>
 
         <div class="piggy-cards">
+
           <article class="piggy-card">
-            <img class="piggy-photo" src="img/ChatGPT_profile01_04.png" alt="ウリ坊の写真">
-            <div class="piggy-icon">🐗</div>
-            <h3>ウリ坊</h3>
-            <p>ちょっぴりやんちゃ。でも、ふかふかの場所を見つけるとすぐにお昼寝。</p>
+            <a class="piggy-visual" href="piggies.html">
+              <img class="piggy-photo" src="img/ChatGPT_profile01_04.png" alt="ウリ坊の写真">
+
+              <div class="piggy-overlay">
+                <span class="piggy-label">URIBOU</span>
+                <h3>ウリ坊</h3>
+                <p>
+                  <span class="piggy-marker-text">ちょっぴりやんちゃ。でも、ふかふかの場所を見つけるとすぐにお昼寝。</span>
+                </p>
+              </div>
+            </a>
           </article>
 
           <article class="piggy-card">
-            <img class="piggy-photo" src="img/ChatGPT_profile01_02.png" alt="ぶちの写真">
-            <div class="piggy-icon">🐷</div>
-            <h3>ぶち</h3>
-            <p>マイペースでのんびり屋さん。お客様のそばで、ゆったり過ごすのが好き。</p>
+            <a class="piggy-visual" href="piggies.html">
+              <img class="piggy-photo" src="img/ChatGPT_profile01_02.png" alt="ぶちの写真">
+
+              <div class="piggy-overlay">
+                <span class="piggy-label">BUCHI</span>
+                <h3>ぶち</h3>
+                <p>
+                  <span class="piggy-marker-text">マイペースでのんびり屋さん。お客様のそばで、ゆったり過ごすのが好き。</span>
+                </p>
+              </div>
+            </a>
           </article>
+
         </div>
 
         <div class="center">
@@ -112,7 +128,7 @@
       </div>
     </section>
 
-    <section class="section movie-section">
+    <section class="section movie-section section-reveal">
       <div class="section-inner movie-grid">
         <div>
           <p class="section-kicker">Movie</p>
@@ -124,7 +140,7 @@
       </div>
     </section>
 
-    <section id="gallery" class="section gallery-section">
+    <section id="gallery" class="section gallery-section section-reveal">
       <div class="section-inner">
         <p class="section-kicker">Gallery</p>
         <h2>のんびり流れる、カフェの時間。</h2>
@@ -143,7 +159,7 @@
       </div>
     </section>
 
-    <section id="access" class="section access-section">
+    <section id="access" class="section access-section section-reveal">
       <div class="section-inner access-grid">
         <div>
           <p class="section-kicker">Access</p>
@@ -179,7 +195,7 @@
       </div>
     </section>
 
-    <section id="reserve" class="section reserve-section">
+    <section id="reserve" class="section reserve-section section-reveal">
       <div class="section-inner narrow">
         <p class="section-kicker">Reserve</p>
         <h2>ぶたっと一息、しに来ませんか。</h2>
@@ -194,6 +210,61 @@
     <small>&copy; Uribou & Buchi Cafe</small>
   </footer>
 
+  <script>
+    const piggyCards = document.querySelectorAll(".piggy-card");
+    const revealSections = document.querySelectorAll(".section-reveal");
+    let previousScrollY = window.scrollY;
+    let motionTicking = false;
+
+    const updatePageMotion = () => {
+      const currentScrollY = window.scrollY;
+      const isScrollingDown = currentScrollY >= previousScrollY;
+
+      piggyCards.forEach((card) => {
+        const cardRect = card.getBoundingClientRect();
+        const isInView =
+          cardRect.top < window.innerHeight * 0.82 &&
+          cardRect.bottom > window.innerHeight * 0.18;
+
+        if (isInView) {
+          card.classList.toggle("is-visible", isScrollingDown);
+        }
+      });
+
+      revealSections.forEach((section) => {
+        const sectionRect = section.getBoundingClientRect();
+        const isInView =
+          sectionRect.top < window.innerHeight * 0.86 &&
+          sectionRect.bottom > window.innerHeight * 0.14;
+
+        if (isInView) {
+          section.classList.toggle("is-revealed", isScrollingDown);
+        }
+      });
+
+      previousScrollY = currentScrollY;
+      motionTicking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!motionTicking) {
+          window.requestAnimationFrame(updatePageMotion);
+          motionTicking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    updatePageMotion();
+  </script>
+
 </body>
 
 </html>
+
+
+
+
+

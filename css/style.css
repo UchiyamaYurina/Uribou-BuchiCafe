@@ -375,6 +375,10 @@ a {
   background: #fffaf4;
 }
 
+.piggies-section {
+  overflow-x: clip;
+}
+
 .piggy-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -388,6 +392,10 @@ a {
   padding: 0;
   border: none;
   background: transparent;
+  opacity: 0;
+  transition:
+    opacity 2s ease .75s,
+    transform 2s cubic-bezier(.16, 1, .3, 1) .75s;
 }
 
 
@@ -434,6 +442,10 @@ a {
 
 .piggy-name h2 {
   margin: 0;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
 }
 
 .piggy-name-illust {
@@ -458,6 +470,123 @@ a {
 
 .piggy-card p {
   margin: 0;
+}
+.piggy-visual {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 22px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.piggy-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  object-fit: cover;
+  filter: saturate(.92);
+  transition:
+    transform .6s ease,
+    filter .6s ease;
+}
+
+.piggy-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  text-align: left;
+  background: linear-gradient(
+    to top,
+    rgba(62, 42, 30, .82),
+    rgba(62, 42, 30, 0)
+  );
+  opacity: 1;
+}
+
+.piggy-overlay h3 {
+  margin: 6px 0 10px;
+  color: var(--white);
+  font-size: 32px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity .95s ease,
+    transform .95s ease;
+  transition-delay: .4s;
+}
+
+.piggy-overlay p {
+  margin: 0;
+  color: rgba(255, 255, 255, .9);
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity .95s ease,
+    transform .95s ease;
+  transition-delay: .15s;
+}
+
+.piggy-label {
+  font-size: 12px;
+  letter-spacing: .2em;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity .95s ease,
+    transform .95s ease;
+  transition-delay: .4s;
+}
+
+.piggy-card.is-visible .piggy-label,
+.piggy-card.is-visible .piggy-overlay h3 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .55s;
+  transition-delay: .65s;
+}
+
+.piggy-card.is-visible .piggy-overlay p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .55s;
+  transition-delay: 1.05s;
+}
+
+.piggy-visual:hover .piggy-photo,
+.piggy-visual:focus-visible .piggy-photo {
+  transform: scale(1.04);
+  filter: saturate(.8) brightness(.78);
+}
+
+.piggy-card:nth-child(1) {
+  transform: translateX(-100vw) rotate(-8deg);
+}
+
+.piggy-card:nth-child(2) {
+  margin-top: 56px;
+  transform: translateX(100vw) rotate(8deg);
+  transition-delay: .95s;
+}
+
+.piggy-card.is-visible {
+  opacity: 1;
+  transition-duration: 1.35s;
+  transition-delay: 0s;
+}
+
+.piggy-card:nth-child(1).is-visible {
+  transform: translateX(0) rotate(-1.5deg);
+}
+
+.piggy-card:nth-child(2).is-visible {
+  transform: translateX(0) rotate(1.5deg);
+  transition-delay: .2s;
 }
 
 .profile-list {
@@ -709,7 +838,267 @@ a {
   letter-spacing: .08em;
 }
 
+/* Section motion rhythm
+----------------------------------- */
+.about-section,
+.movie-section,
+.gallery-section,
+.access-section,
+.reserve-section {
+  overflow-x: clip;
+}
+
+/* About: quiet upward reveal */
+.about-section .section-inner {
+  opacity: 0;
+  transform: translateY(56px);
+  transition:
+    opacity 1.35s ease .48s,
+    transform 1.35s cubic-bezier(.22, 1, .36, 1) .48s;
+}
+
+.about-section.is-revealed .section-inner {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+/* Movie: copy and video enter separately */
+.movie-section .movie-grid > div,
+.movie-section .inline-video {
+  opacity: 0;
+  transition:
+    opacity 1.3s ease,
+    transform 1.3s cubic-bezier(.22, 1, .36, 1);
+}
+
+.movie-section .movie-grid > div {
+  transform: translateX(-54px);
+  transition-delay: .45s;
+}
+
+.movie-section .inline-video {
+  transform: translateX(54px) scale(.9) rotate(2deg);
+  transition-delay: .65s;
+}
+
+.movie-section.is-revealed .movie-grid > div {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0s;
+}
+
+.movie-section.is-revealed .inline-video {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotate(1deg);
+  transition-delay: .18s;
+}
+
+/* Gallery: staggered editorial rhythm */
+.gallery-section .section-kicker,
+.gallery-section h2,
+.gallery-section .center,
+.gallery-section .gallery-grid > * {
+  opacity: 0;
+  transition:
+    opacity .85s ease,
+    transform .95s cubic-bezier(.22, 1, .36, 1);
+}
+
+.gallery-section .section-kicker,
+.gallery-section h2,
+.gallery-section .center {
+  transform: translateY(32px);
+  transition-delay: .48s;
+}
+
+.gallery-section .gallery-grid > * {
+  transform: translateY(64px) scale(.92);
+  transition-delay: .35s;
+}
+
+.gallery-section.is-revealed .section-kicker,
+.gallery-section.is-revealed h2,
+.gallery-section.is-revealed .center {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.gallery-section.is-revealed .gallery-grid > * {
+  opacity: 1;
+}
+
+.gallery-section.is-revealed .gallery-grid > :nth-child(1) {
+  transform: translateY(0) scale(1) rotate(-2.2deg);
+  transition-delay: .12s;
+}
+
+.gallery-section.is-revealed .gallery-grid > :nth-child(2) {
+  transform: translateY(0) scale(1) rotate(1.6deg);
+  transition-delay: .24s;
+}
+
+.gallery-section.is-revealed .gallery-grid > :nth-child(3) {
+  transform: translateY(0) scale(1) rotate(-1deg);
+  transition-delay: .36s;
+}
+
+.gallery-section.is-revealed .gallery-grid > :nth-child(4) {
+  transform: translateY(0) scale(1) rotate(1.8deg);
+  transition-delay: .48s;
+}
+
+.gallery-section.is-revealed .gallery-grid > :nth-child(5) {
+  transform: translateY(0) scale(1) rotate(-1.4deg);
+  transition-delay: .6s;
+}
+
+.gallery-section.is-revealed .center {
+  transition-delay: .72s;
+}
+
+/* Access: restrained left and right reveal */
+.access-section .access-grid > div {
+  opacity: 0;
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.access-section .access-grid > div:first-child {
+  transform: translateX(-48px);
+  transition-delay: .45s;
+}
+
+.access-section .access-grid > div:last-child {
+  transform: translateX(48px);
+  transition-delay: .65s;
+}
+
+.access-section.is-revealed .access-grid > div {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0s;
+}
+
+.access-section.is-revealed .access-grid > div:last-child {
+  transition-delay: .18s;
+}
+
+/* Reserve: quiet finish with an expressive button */
+.reserve-section .section-inner {
+  opacity: 0;
+  transform: translateY(42px);
+  transition:
+    opacity 1.35s ease .48s,
+    transform 1.35s cubic-bezier(.22, 1, .36, 1) .48s;
+}
+
+.reserve-section.is-revealed .section-inner {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.reserve-section .reserve-button {
+  box-shadow: 0 8px 20px rgba(75, 50, 34, .16);
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    background-color .35s ease;
+}
+
+.reserve-section .reserve-button:hover,
+.reserve-section .reserve-button:focus-visible {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 14px 28px rgba(75, 50, 34, .24);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-section .section-inner,
+  .movie-section .movie-grid > div,
+  .movie-section .inline-video,
+  .gallery-section .section-kicker,
+  .gallery-section h2,
+  .gallery-section .center,
+  .gallery-section .gallery-grid > *,
+  .access-section .access-grid > div,
+  .reserve-section .section-inner,
+  .piggy-card,
+  .piggy-label,
+  .piggy-overlay h3,
+  .piggy-overlay p {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Piggies text pattern 03: line-by-line marker */
+.piggy-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(43, 29, 21, .58),
+    rgba(43, 29, 21, 0) 78%
+  );
+}
+
+.piggy-overlay h3 {
+  align-self: flex-start;
+  margin: 8px 0 18px;
+  padding: 0 .2em .08em;
+  color: var(--white);
+  font-size: clamp(32px, 4vw, 42px);
+  font-weight: 400;
+  letter-spacing: .12em;
+  background: linear-gradient(
+    transparent 52%,
+    rgba(159, 177, 143, .86) 52%
+  );
+  text-shadow: 0 2px 10px rgba(30, 18, 12, .5);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.piggy-overlay p {
+  max-width: 390px;
+  color: var(--brown);
+  font-size: 15px;
+  line-height: 2.05;
+  text-shadow: none;
+}
+
+.piggy-marker-text {
+  padding: .16em .38em .2em;
+  background: rgba(255, 250, 244, .9);
+  box-shadow: .24em 0 0 rgba(255, 250, 244, .9),
+    -.24em 0 0 rgba(255, 250, 244, .9);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.piggy-label {
+  align-self: flex-start;
+  color: rgba(255, 255, 255, .88);
+  font-size: 11px;
+  text-shadow: 0 1px 6px rgba(30, 18, 12, .5);
+}
+
 @media (max-width: 768px) {
+    .piggy-card:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .piggy-overlay h3 {
+    font-size: 26px;
+  }
+
+  .piggy-overlay p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
   .site-header {
     height: 76px;
     padding: 16px 20px;
@@ -877,3 +1266,6 @@ a {
   }
 
 }
+
+
+
