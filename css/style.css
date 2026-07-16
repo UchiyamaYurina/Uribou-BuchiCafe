@@ -8,6 +8,64 @@
   --white: #fff;
 }
 
+/* Subpage motion tone
+   TOPと同じく、最初に現れた後は情報を消さずにゆっくり漂わせる */
+.motion-ready .page-motion {
+  opacity: 0;
+  transition:
+    opacity 1.15s ease var(--motion-delay, 0s),
+    transform 1.35s cubic-bezier(.22, 1, .36, 1) var(--motion-delay, 0s);
+}
+
+.motion-ready .page-motion.motion-rise {
+  transform: translateY(42px) scale(.98);
+}
+
+.motion-ready .page-motion.motion-from-left {
+  transform: translateX(-52px) rotate(-1.8deg);
+}
+
+.motion-ready .page-motion.motion-from-right {
+  transform: translateX(52px) rotate(1.8deg);
+}
+
+.motion-ready .page-motion.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes subpage-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  36% {
+    translate: 1px -5px;
+  }
+
+  70% {
+    translate: -1px -2px;
+  }
+}
+
+.motion-ready .page-motion.is-shown.is-floating {
+  animation:
+    subpage-float var(--float-duration, 8s) ease-in-out
+    calc(1.35s + var(--motion-delay, 0s)) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .page-motion,
+  .motion-ready .page-motion.is-shown.is-floating {
+    opacity: 1;
+    transform: none;
+    translate: none;
+    transition: none;
+    animation: none;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -746,6 +804,32 @@ a {
 
 .reserve-section {
   text-align: center;
+  padding-top: 36px;
+}
+
+.reserve-page-hero {
+  padding-bottom: 32px;
+}
+
+.reserve-eyecatch {
+  width: min(590px, 90%);
+  margin: 24px auto 0;
+  transform: rotate(-1deg);
+}
+
+.reserve-eyecatch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(.92);
+  transition:
+    transform .7s ease,
+    filter .7s ease;
+}
+
+.reserve-eyecatch:hover img {
+  transform: scale(1.025);
+  filter: saturate(.98) sepia(0);
 }
 
 .reserve-card {
@@ -1015,6 +1099,96 @@ a {
   box-shadow: 0 14px 28px rgba(75, 50, 34, .24);
 }
 
+/* Floating motion
+   一度表示した情報は隠さず、画面内にある間だけゆっくり漂わせる */
+@keyframes float-soft {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  38% {
+    translate: 1px -5px;
+  }
+
+  72% {
+    translate: -1px -2px;
+  }
+}
+
+@keyframes float-card-left {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  35% {
+    translate: -3px -9px;
+  }
+
+  68% {
+    translate: 3px -4px;
+  }
+}
+
+@keyframes float-card-right {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  32% {
+    translate: 3px -7px;
+  }
+
+  70% {
+    translate: -2px -3px;
+  }
+}
+
+.piggy-card:nth-child(1).is-visible.is-floating {
+  animation: float-card-left 7.2s ease-in-out 1.5s infinite;
+}
+
+.piggy-card:nth-child(2).is-visible.is-floating {
+  animation: float-card-right 7.8s ease-in-out 1.7s infinite;
+}
+
+.about-section.is-revealed.is-floating .section-inner,
+.reserve-section.is-revealed.is-floating .section-inner {
+  animation: float-soft 8s ease-in-out 1.4s infinite;
+}
+
+.movie-section.is-revealed.is-floating .movie-grid > div {
+  animation: float-soft 7.6s ease-in-out 1.45s infinite;
+}
+
+.movie-section.is-revealed.is-floating .inline-video {
+  animation: float-card-right 8.4s ease-in-out 1.7s infinite;
+}
+
+.gallery-section.is-revealed.is-floating .section-kicker,
+.gallery-section.is-revealed.is-floating h2,
+.gallery-section.is-revealed.is-floating .center {
+  animation: float-soft 8.2s ease-in-out 1.2s infinite;
+}
+
+.gallery-section.is-revealed.is-floating .gallery-grid > :nth-child(odd) {
+  animation: float-card-left 7.6s ease-in-out 1.4s infinite;
+}
+
+.gallery-section.is-revealed.is-floating .gallery-grid > :nth-child(even) {
+  animation: float-card-right 8.1s ease-in-out 1.55s infinite;
+}
+
+.access-section.is-revealed.is-floating .access-grid > div:first-child {
+  animation: float-card-left 8.3s ease-in-out 1.35s infinite;
+}
+
+.access-section.is-revealed.is-floating .access-grid > div:last-child {
+  animation: float-card-right 8.7s ease-in-out 1.55s infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .about-section .section-inner,
   .movie-section .movie-grid > div,
@@ -1032,6 +1206,8 @@ a {
     opacity: 1;
     transform: none;
     transition: none;
+    animation: none;
+    translate: none;
   }
 }
 
@@ -1166,6 +1342,12 @@ a {
     padding-bottom: 48px;
   }
 
+  .reserve-eyecatch {
+    width: 100%;
+    margin-top: 34px;
+    transform: rotate(-.5deg);
+  }
+
   .page-hero {
     padding: 110px 22px 44px;
   }
@@ -1189,6 +1371,19 @@ a {
 
   .section {
     padding: 70px 22px;
+  }
+
+  .reserve-page-hero {
+    padding-bottom: 26px;
+  }
+
+  .reserve-section {
+    padding: 30px 22px 48px;
+  }
+
+  .reserve-eyecatch {
+    width: 92%;
+    margin-top: 18px;
   }
 
   .piggy-cards,
@@ -1266,6 +1461,3 @@ a {
   }
 
 }
-
-
-

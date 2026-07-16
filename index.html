@@ -212,59 +212,55 @@
 
   <script>
     const piggyCards = document.querySelectorAll(".piggy-card");
+    const piggiesSection = document.querySelector(".piggies-section");
     const revealSections = document.querySelectorAll(".section-reveal");
-    let previousScrollY = window.scrollY;
-    let motionTicking = false;
+    const motionTargets = [piggiesSection, ...revealSections].filter(Boolean);
 
-    const updatePageMotion = () => {
-      const currentScrollY = window.scrollY;
-      const isScrollingDown = currentScrollY >= previousScrollY;
+    if ("IntersectionObserver" in window) {
+      const motionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const target = entry.target;
 
-      piggyCards.forEach((card) => {
-        const cardRect = card.getBoundingClientRect();
-        const isInView =
-          cardRect.top < window.innerHeight * 0.82 &&
-          cardRect.bottom > window.innerHeight * 0.18;
+            if (target === piggiesSection) {
+              piggyCards.forEach((card) => {
+                if (entry.isIntersecting) {
+                  /* 動いていないセクションを基準に、左右のカードを表示する */
+                  card.classList.add("is-visible", "is-floating");
+                } else {
+                  /* カードは表示したまま、画面外では揺れだけを止める */
+                  card.classList.remove("is-floating");
+                }
+              });
 
-        if (isInView) {
-          card.classList.toggle("is-visible", isScrollingDown);
+              return;
+            }
+
+            if (entry.isIntersecting) {
+              target.classList.add("is-revealed", "is-floating");
+            } else {
+              /* 表示済みの内容は隠さず、画面外では揺れだけを止める */
+              target.classList.remove("is-floating");
+            }
+          });
+        },
+        {
+          threshold: 0.16,
+          rootMargin: "0px 0px -8% 0px"
         }
-      });
+      );
 
-      revealSections.forEach((section) => {
-        const sectionRect = section.getBoundingClientRect();
-        const isInView =
-          sectionRect.top < window.innerHeight * 0.86 &&
-          sectionRect.bottom > window.innerHeight * 0.14;
-
-        if (isInView) {
-          section.classList.toggle("is-revealed", isScrollingDown);
-        }
-      });
-
-      previousScrollY = currentScrollY;
-      motionTicking = false;
-    };
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!motionTicking) {
-          window.requestAnimationFrame(updatePageMotion);
-          motionTicking = true;
-        }
-      },
-      { passive: true }
-    );
-
-    updatePageMotion();
+      motionTargets.forEach((target) => motionObserver.observe(target));
+    } else {
+      /* 古いブラウザでも情報が非表示にならないようにする */
+      piggyCards.forEach((card) => card.classList.add("is-visible"));
+      revealSections.forEach((section) => section.classList.add("is-revealed"));
+    }
   </script>
 
 </body>
 
 </html>
-
-
 
 
 
