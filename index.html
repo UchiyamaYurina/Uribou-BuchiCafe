@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="学習・ポートフォリオ用に制作した、2匹の子ぶたとゆっくり過ごす架空のカフェサイトです。">
   <title>ウリ坊とぶちのカフェ</title>
 
   <!-- Google Fonts -->
@@ -30,7 +31,7 @@
   </div>
 
   <div class="loading" aria-hidden="true">
-    <img src="loading.svg" alt="">
+    <img src="loading.svg" alt="" aria-hidden="true">
   </div>
   <header class="site-header">
     <a class="header-logo" href="index.html" aria-label="トップへ戻る">
@@ -49,9 +50,10 @@
       <a href="piggies.html">Piggies</a>
       <a href="gallery.html">Gallery</a>
       <a href="access.html">Access</a>
-      <a class="reserve-link" href="reserve.html">Reserve</a>
     </nav>
   </header>
+
+  <a class="floating-reserve" href="reserve.html#contact-form"><span>Reserve</span><small>予約・お問い合わせ</small></a>
 
   <main>
 
@@ -66,6 +68,43 @@
         <h1>ほっと一息、ぶたっと一息。</h1>
         <p class="hero-sub">Every Day, Piggy Day.</p>
         <a class="scroll-link" href="#about">Scroll</a>
+      </div>
+    </section>
+
+    <section class="section calendar-section section-reveal" aria-label="一週間の営業案内">
+      <div class="section-inner calendar-inner">
+        <div class="weekly-calendar-wrap">
+          <table class="weekly-calendar">
+            <thead>
+              <tr>
+                <th scope="col">月</th>
+                <th scope="col">火</th>
+                <th scope="col">水</th>
+                <th scope="col">木</th>
+                <th scope="col">金</th>
+                <th scope="col">土</th>
+                <th scope="col">日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td aria-label="営業日"><span aria-hidden="true"></span></td>
+                <td aria-label="営業日"><span aria-hidden="true"></span></td>
+                <td class="weekly-closed"><span>定休日</span></td>
+                <td aria-label="営業日"><span aria-hidden="true"></span></td>
+                <td aria-label="営業日"><span aria-hidden="true"></span></td>
+                <td aria-label="営業日"><span aria-hidden="true"></span></td>
+                <td aria-label="営業日"><span aria-hidden="true"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="calendar-hours"><strong>営業時間</strong> 9:00–16:00 <span>（L.O.15:30）</span></p>
+        <div class="calendar-social">
+          <p class="calendar-note">臨時休業や営業時間の変更はSNSでお知らせします。</p>
+          <a class="instagram-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagramを開く（外部サイト）">Instagram</a>
+        </div>
       </div>
     </section>
 
@@ -146,11 +185,12 @@
         <h2>のんびり流れる、カフェの時間。</h2>
 
         <div class="gallery-grid">
-          <img class="gallery-image" src="img/ChatGPT_profile_6.png" alt="ウリ坊6">
-          <img class="gallery-image" src="img/ChatGPT_profile_2.png" alt="ぶち2">
-          <img class="gallery-image" src="img/ChatGPT_profile_5.png" alt="ウリ坊5">
-          <div class="gallery-item">Nap Time</div>
-          <div class="gallery-item">Piggy Day</div>
+          <img class="gallery-image" src="img/ChatGPT_profile_6.png" alt="木のボールで遊ぶウリ坊">
+          <img class="gallery-image" src="img/ChatGPT_profile_2.png" alt="店内でこちらを見つめるぶち">
+          <img class="gallery-image" src="img/ChatGPT_profile_5.png" alt="ふかふかのラグで眠るウリ坊">
+          <img class="gallery-image" src="img/ChatGPT_cafe_01.png" alt="木のぬくもりに包まれたカフェの店内">
+          <img class="gallery-image" src="img/ChatGPT_cafe_04.png" alt="木のテーブルに置かれたコーヒーとケーキ">
+          <img class="gallery-image" src="img/ChatGPT_cafe_05.png" alt="緑が見えるカフェの入口とショーケース">
         </div>
 
         <div class="center">
@@ -187,6 +227,7 @@
 
         <div class="map-embed">
           <iframe
+            title="Uribou &amp; Buchi Cafe周辺の地図"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.8794563803103!2d142.49957049881365!3d43.69226939287987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0cdcee1ee37b2b%3A0x1801909bbfe3d7d2!2z5p2x5qmL!5e0!3m2!1sja!2sjp!4v1784020303253!5m2!1sja!2sjp"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin">
@@ -205,9 +246,31 @@
     </section>
 
   </main>
+  <div class="footer-gallery" aria-hidden="true">
+    <span class="footer-photo footer-photo-01"></span>
+    <span class="footer-photo footer-photo-03"></span>
+    <span class="footer-photo footer-photo-04"></span>
+    <span class="footer-photo footer-photo-05"></span>
+    <span class="footer-photo footer-photo-06"></span>
+    <span class="footer-photo footer-photo-07"></span>
+  </div>
+
   <footer class="site-footer">
-    <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
-    <small>&copy; Uribou & Buchi Cafe</small>
+    <div class="footer-inner">
+      <a class="footer-brand" href="index.html" aria-label="トップページへ戻る">
+        <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
+        <span>Uribou &amp; Buchi Cafe</span>
+      </a>
+      <nav class="footer-nav" aria-label="フッターメニュー">
+        <a href="about.html">About</a>
+        <a href="piggies.html">Piggies</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="access.html">Access</a>
+        <a href="reserve.html">Reserve</a>
+      </nav>
+      <p class="footer-note">このWebサイトは学習・ポートフォリオ用に制作した架空のカフェサイトです。</p>
+      <small>&copy; 2026 Uribou &amp; Buchi Cafe</small>
+    </div>
   </footer>
 
   <script>
@@ -258,9 +321,7 @@
     }
   </script>
 
+  <script src="js/footer-gallery.js"></script>
 </body>
 
 </html>
-
-
-

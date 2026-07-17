@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Uribou &amp; Buchi Cafeの予約案内、よくある質問、予約・お問い合わせフォームをご用意しています。">
   <title>Reserve | ウリ坊とぶちのカフェ</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -26,9 +27,10 @@
       <a href="piggies.html">Piggies</a>
       <a href="gallery.html">Gallery</a>
       <a href="access.html">Access</a>
-      <a class="reserve-link" href="reserve.html">Reserve</a>
     </nav>
   </header>
+
+  <a class="floating-reserve" href="reserve.html#contact-form"><span>Reserve</span><small>予約・お問い合わせ</small></a>
 
   <main>
     <section class="page-hero reserve-page-hero">
@@ -53,10 +55,92 @@
             事前予約制としています。
           </p>
 
-          <a class="reserve-button" href="mailto:example@example.com">
-            メールで予約する
+          <a class="reserve-button" href="#contact-form">
+            予約する
           </a>
         </div>
+      </div>
+    </section>
+
+    <!-- 予約・お問い合わせフォーム -->
+    <section id="contact-form" class="section contact-section">
+      <div class="section-inner narrow">
+        <p class="section-kicker">Contact</p>
+        <h2>予約・お問い合わせフォーム</h2>
+        <p class="contact-intro">
+          予約のご希望やご来店前のご質問を入力してください。
+          <span>必須</span>の付いた項目は必ず入力してください。
+        </p>
+
+        <form class="contact-form" action="#" method="post">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="contact-purpose">ご用件 <span class="required-label">必須</span></label>
+              <select id="contact-purpose" name="purpose" required>
+                <option value="">選択してください</option>
+                <option value="reserve">予約を希望する</option>
+                <option value="question">来店前に質問する</option>
+                <option value="other">その他のお問い合わせ</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-name">お名前 <span class="required-label">必須</span></label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-email">メールアドレス <span class="required-label">必須</span></label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-tel">電話番号</label>
+              <input id="contact-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel">
+            </div>
+
+            <div class="form-field">
+              <label for="contact-date">ご来店希望日</label>
+              <input id="contact-date" name="date" type="date">
+            </div>
+
+            <div class="form-field">
+              <label for="contact-time">ご来店希望時間</label>
+              <select id="contact-time" name="time">
+                <option value="">選択してください</option>
+                <option value="09:00">9:00</option>
+                <option value="10:30">10:30</option>
+                <option value="12:00">12:00</option>
+                <option value="13:30">13:30</option>
+                <option value="15:00">15:00</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-guests">ご利用人数</label>
+              <select id="contact-guests" name="guests">
+                <option value="">選択してください</option>
+                <option value="1">1名</option>
+                <option value="2">2名</option>
+                <option value="3">3名</option>
+                <option value="4">4名</option>
+              </select>
+            </div>
+
+            <div class="form-field form-field-wide">
+              <label for="contact-message">お問い合わせ内容 <span class="required-label">必須</span></label>
+              <textarea id="contact-message" name="message" rows="6" required></textarea>
+            </div>
+          </div>
+
+          <p class="form-demo-note">
+            このサイトは架空のため、入力内容が外部へ送信されることはありません。
+          </p>
+          <button class="form-submit" type="submit">入力内容を確認する</button>
+          <p class="form-status" role="status" tabindex="-1" hidden>
+            入力内容を確認しました。このサイトは架空のため、実際の送信は行われません。
+          </p>
+        </form>
       </div>
     </section>
 
@@ -169,12 +253,36 @@
     </section>
 
   </main>
+  <div class="footer-gallery" aria-hidden="true">
+    <span class="footer-photo footer-photo-01"></span>
+    <span class="footer-photo footer-photo-03"></span>
+    <span class="footer-photo footer-photo-04"></span>
+    <span class="footer-photo footer-photo-05"></span>
+    <span class="footer-photo footer-photo-06"></span>
+    <span class="footer-photo footer-photo-07"></span>
+  </div>
+
   <footer class="site-footer">
-    <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
-    <small>&copy; Uribou & Buchi Cafe</small>
+    <div class="footer-inner">
+      <a class="footer-brand" href="index.html" aria-label="トップページへ戻る">
+        <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
+        <span>Uribou &amp; Buchi Cafe</span>
+      </a>
+      <nav class="footer-nav" aria-label="フッターメニュー">
+        <a href="about.html">About</a>
+        <a href="piggies.html">Piggies</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="access.html">Access</a>
+        <a href="reserve.html">Reserve</a>
+      </nav>
+      <p class="footer-note">このWebサイトは学習・ポートフォリオ用に制作した架空のカフェサイトです。</p>
+      <small>&copy; 2026 Uribou &amp; Buchi Cafe</small>
+    </div>
   </footer>
 
   <script src="js/page-motion.js"></script>
+  <script src="js/reserve-form.js"></script>
+  <script src="js/footer-gallery.js"></script>
 </body>
 
 </html>

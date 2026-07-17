@@ -37,6 +37,7 @@
 
   if (pageName === "reserve.html") {
     addTargets(".reserve-card", "motion-rise");
+    addTargets(".contact-section .section-inner", "motion-rise");
     addTargets(".faq-section .section-kicker, .faq-section h2", "motion-rise");
     addTargets(".faq-item", "motion-rise");
     addTargets(".visit-notice-section .soft-box", "motion-rise");

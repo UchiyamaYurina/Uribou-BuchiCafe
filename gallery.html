@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ウリ坊とぶちの動画や写真を通して、架空のカフェで流れる穏やかな時間をご紹介します。">
   <title>Gallery | ウリ坊とぶちのカフェ</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -24,9 +25,10 @@
       <a href="piggies.html">Piggies</a>
       <a href="gallery.html">Gallery</a>
       <a href="access.html">Access</a>
-      <a class="reserve-link" href="reserve.html">Reserve</a>
     </nav>
   </header>
+
+  <a class="floating-reserve" href="reserve.html#contact-form"><span>Reserve</span><small>予約・お問い合わせ</small></a>
 
   <main>
     <section class="page-hero">
@@ -44,20 +46,43 @@
         <div class="gallery-grid gallery-page-grid">
           <img class="gallery-image" src="uribou-photo.jpg" alt="ウリ坊">
           <img class="gallery-image" src="buchi-photo.jpg" alt="ぶち">
-          <div class="gallery-item">Nap Time</div>
-          <div class="gallery-item">Coffee</div>
-          <div class="gallery-item">Piggy Day</div>
-          <div class="gallery-item">Slow Cafe</div>
+          <img class="gallery-image" src="img/ChatGPT_cafe_01.png" alt="木のぬくもりに包まれたカフェの店内">
+          <img class="gallery-image" src="img/ChatGPT_cafe_04.png" alt="木のテーブルに置かれたコーヒーとケーキ">
+          <img class="gallery-image" src="img/ChatGPT_cafe_05.png" alt="緑が見えるカフェの入口とショーケース">
+          <img class="gallery-image" src="img/ChatGPT_cafe_06.png" alt="窓辺に並ぶ植物と小さな写真立て">
         </div>
       </div>
     </section>
 
   </main>
+  <div class="footer-gallery" aria-hidden="true">
+    <span class="footer-photo footer-photo-01"></span>
+    <span class="footer-photo footer-photo-03"></span>
+    <span class="footer-photo footer-photo-04"></span>
+    <span class="footer-photo footer-photo-05"></span>
+    <span class="footer-photo footer-photo-06"></span>
+    <span class="footer-photo footer-photo-07"></span>
+  </div>
+
   <footer class="site-footer">
-    <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
-    <small>&copy; Uribou & Buchi Cafe</small>
+    <div class="footer-inner">
+      <a class="footer-brand" href="index.html" aria-label="トップページへ戻る">
+        <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
+        <span>Uribou &amp; Buchi Cafe</span>
+      </a>
+      <nav class="footer-nav" aria-label="フッターメニュー">
+        <a href="about.html">About</a>
+        <a href="piggies.html">Piggies</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="access.html">Access</a>
+        <a href="reserve.html">Reserve</a>
+      </nav>
+      <p class="footer-note">このWebサイトは学習・ポートフォリオ用に制作した架空のカフェサイトです。</p>
+      <small>&copy; 2026 Uribou &amp; Buchi Cafe</small>
+    </div>
   </footer>
 
   <script src="js/page-motion.js"></script>
+  <script src="js/footer-gallery.js"></script>
 </body>
 </html>
