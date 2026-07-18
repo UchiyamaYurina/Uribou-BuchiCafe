@@ -4,12 +4,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe5">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <meta name="description" content="Uribou &amp; Buchi Cafeでのんびり暮らす、ウリ坊とぶちの性格や好きなことをご紹介します。">
   <title>Piggies | ウリ坊とぶちのカフェ</title>
+  <link rel="canonical" href="https://uchiyamayurina.github.io/Uribou-BuchiCafe/piggies.html">
+  <meta property="og:title" content="Piggies | ウリ坊とぶちのカフェ">
+  <meta property="og:description" content="ウリ坊とぶちの性格や、好きなことをご紹介します。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
   <header class="site-header">
     <a class="header-logo" href="index.html" aria-label="トップへ戻る">
       <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
@@ -32,7 +40,7 @@
 
   <a class="floating-reserve" href="reserve.html#contact-form"><span>Reserve</span><small>予約・お問い合わせ</small></a>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero">
       <p class="section-kicker">Piggies</p>
       <h1>2匹の子ぶたたち</h1>
@@ -44,16 +52,17 @@
     <div class="profile-list">
 
       <article class="profile-card">
-        <img src="uribou-photo.jpg" alt="ウリ坊の写真">
+        <img src="uribou-photo.jpg" alt="ウリ坊の写真" loading="lazy" decoding="async">
 
         <div>
           <div class="piggy-name">
             <h2>ウリ坊</h2>
             <img
               class="piggy-name-illust"
-              src="img/ChatGPT_bg_12.png"
-              alt=""
-              aria-hidden="true">
+              src="img/ChatGPT_bg_12.webp"
+              alt="葉のそばに立つウリ坊のイラスト"
+              loading="lazy"
+              decoding="async">
           </div>
 
           <p>ちょっぴりやんちゃ。でも、ふかふかの場所を見つけるとすぐにお昼寝。</p>
@@ -67,16 +76,17 @@
       </article>
 
       <article class="profile-card reverse">
-        <img src="buchi-photo.jpg" alt="ぶちの写真">
+        <img src="buchi-photo.jpg" alt="ぶちの写真" loading="lazy" decoding="async">
 
         <div>
           <div class="piggy-name">
             <h2>ぶち</h2>
             <img
               class="piggy-name-illust"
-              src="img/ChatGPT_bg_01.png"
-              alt=""
-              aria-hidden="true">
+              src="img/ChatGPT_bg_01.webp"
+              alt="おすわりしているぶちのイラスト"
+              loading="lazy"
+              decoding="async">
           </div>
 
           <p>マイペースでのんびり屋さん。お客様のそばで、ゆったり過ごすのが好き。</p>
@@ -123,6 +133,7 @@
 
   <script src="js/page-motion.js"></script>
   <script src="js/footer-gallery.js"></script>
+  <script src="js/site-ui.js"></script>
 </body>
 
 </html>

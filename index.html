@@ -4,8 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe5">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <meta name="description" content="学習・ポートフォリオ用に制作した、2匹の子ぶたとゆっくり過ごす架空のカフェサイトです。">
   <title>ウリ坊とぶちのカフェ</title>
+  <link rel="canonical" href="https://uchiyamayurina.github.io/Uribou-BuchiCafe/">
+  <meta property="og:title" content="ウリ坊とぶちのカフェ">
+  <meta property="og:description" content="2匹の子ぶたとゆっくり過ごす、架空のカフェサイトです。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,21 +25,32 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
 
   <div class="page-illusts" aria-hidden="true">
 
-    <img class="float-illust illust01" src="img/ChatGPT_bg_01.png" alt="ぶち">
-    <img class="float-illust illust02" src="img/ChatGPT_bg_12.png" alt="ウリ坊">
-    <img class="float-illust illust03" src="img/ChatGPT_bg_17.png" alt="葉">
-    <img class="float-illust illust04" src="img/ChatGPT_bg _11.png" alt="足跡">
-    <img class="float-illust illust05" src="img/ChatGPT_bg _03.png" alt="コーヒーミル">
-    <img class="float-illust illust06" src="img/ChatGPT_bg _04.png" alt="コーヒー豆">
+    <img class="float-illust illust01" src="img/ChatGPT_bg_01.webp" alt="ぶち">
+    <img class="float-illust illust02" src="img/ChatGPT_bg_12.webp" alt="ウリ坊">
+    <img class="float-illust illust03" src="img/ChatGPT_bg_17.webp" alt="葉">
+    <img class="float-illust illust04" src="img/ChatGPT_bg _11.webp" alt="足跡">
+    <img class="float-illust illust05" src="img/ChatGPT_bg _03.webp" alt="コーヒーミル">
+    <img class="float-illust illust06" src="img/ChatGPT_bg _04.webp" alt="コーヒー豆">
 
   </div>
 
-  <div class="loading" aria-hidden="true">
-    <img src="loading.svg" alt="" aria-hidden="true">
+  <div class="loading" role="status">
+    <img src="loading.svg" alt="ウリ坊とぶちのローディングイラスト">
   </div>
+  <script>
+    (() => {
+      const loadingScreen = document.querySelector(".loading");
+      if (!loadingScreen) return;
+
+      const hideLoadingScreen = () => loadingScreen.classList.add("is-hidden");
+      window.setTimeout(hideLoadingScreen, 900);
+      window.addEventListener("load", () => window.setTimeout(hideLoadingScreen, 120), { once: true });
+    })();
+  </script>
   <header class="site-header">
     <a class="header-logo" href="index.html" aria-label="トップへ戻る">
       <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
@@ -55,13 +73,14 @@
 
   <a class="floating-reserve" href="reserve.html#contact-form"><span>Reserve</span><small>予約・お問い合わせ</small></a>
 
-  <main>
+  <main id="main-content">
 
 
 
     <section class="hero">
-      <video class="hero-video" src="hero-pig.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <video id="hero-pig-video" class="hero-video" src="hero-pig.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
       <div class="hero-overlay"></div>
+      <button class="video-motion-toggle hero-video-toggle" type="button" data-video="hero-pig-video" aria-controls="hero-pig-video">動画を停止</button>
 
       <div class="hero-copy">
         <p class="hero-label">Uribou & Buchi Cafe</p>
@@ -103,7 +122,7 @@
         <p class="calendar-hours"><strong>営業時間</strong> 9:00–16:00 <span>（L.O.15:30）</span></p>
         <div class="calendar-social">
           <p class="calendar-note">臨時休業や営業時間の変更はSNSでお知らせします。</p>
-          <a class="instagram-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagramを開く（外部サイト）">Instagram</a>
+          <a class="instagram-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagramを開く（外部サイト・デモリンク）" title="架空サイトのためInstagramトップへ移動します">Instagram <small>デモリンク</small></a>
         </div>
       </div>
     </section>
@@ -133,7 +152,7 @@
 
           <article class="piggy-card">
             <a class="piggy-visual" href="piggies.html">
-              <img class="piggy-photo" src="img/ChatGPT_profile01_04.png" alt="ウリ坊の写真">
+              <img class="piggy-photo" src="img/ChatGPT_profile01_04.webp" alt="ウリ坊の写真" loading="lazy" decoding="async">
 
               <div class="piggy-overlay">
                 <span class="piggy-label">URIBOU</span>
@@ -147,7 +166,7 @@
 
           <article class="piggy-card">
             <a class="piggy-visual" href="piggies.html">
-              <img class="piggy-photo" src="img/ChatGPT_profile01_02.png" alt="ぶちの写真">
+              <img class="piggy-photo" src="img/ChatGPT_profile01_02.webp" alt="ぶちの写真" loading="lazy" decoding="async">
 
               <div class="piggy-overlay">
                 <span class="piggy-label">BUCHI</span>
@@ -175,7 +194,10 @@
           <p>2匹の様子を更新中。</p>
           <a class="text-link" href="gallery.html">Galleryを見る</a>
         </div>
-        <video class="inline-video" src="piggy-movie.mp4" autoplay muted loop playsinline preload="auto"></video>
+        <div class="inline-video-frame">
+          <video id="top-piggy-video" class="inline-video" data-src="piggy-movie.mp4" autoplay muted loop playsinline preload="none" poster="buchi-photo.jpg" aria-label="ウリ坊とぶちが店内で過ごす動画">お使いのブラウザでは動画を再生できません。</video>
+          <button class="video-motion-toggle" type="button" data-video="top-piggy-video" aria-controls="top-piggy-video">動画を再生</button>
+        </div>
       </div>
     </section>
 
@@ -185,12 +207,12 @@
         <h2>のんびり流れる、カフェの時間。</h2>
 
         <div class="gallery-grid">
-          <img class="gallery-image" src="img/ChatGPT_profile_6.png" alt="木のボールで遊ぶウリ坊">
-          <img class="gallery-image" src="img/ChatGPT_profile_2.png" alt="店内でこちらを見つめるぶち">
-          <img class="gallery-image" src="img/ChatGPT_profile_5.png" alt="ふかふかのラグで眠るウリ坊">
-          <img class="gallery-image" src="img/ChatGPT_cafe_01.png" alt="木のぬくもりに包まれたカフェの店内">
-          <img class="gallery-image" src="img/ChatGPT_cafe_04.png" alt="木のテーブルに置かれたコーヒーとケーキ">
-          <img class="gallery-image" src="img/ChatGPT_cafe_05.png" alt="緑が見えるカフェの入口とショーケース">
+          <img class="gallery-image" src="img/ChatGPT_profile_6.webp" alt="木のボールで遊ぶウリ坊" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_profile_2.webp" alt="店内でこちらを見つめるぶち" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_profile_5.webp" alt="ふかふかのラグで眠るウリ坊" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_cafe_01.webp" alt="木のぬくもりに包まれたカフェの店内" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_cafe_04.webp" alt="木のテーブルに置かれたコーヒーとケーキ" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_cafe_05.webp" alt="緑が見えるカフェの入口とショーケース" loading="lazy" decoding="async">
         </div>
 
         <div class="center">
@@ -207,7 +229,7 @@
           <dl class="info-list">
             <div>
               <dt>営業時間</dt>
-              <dd>9:00 - 16:00</dd>
+              <dd>9:00–16:00（L.O.15:30）</dd>
             </div>
             <div>
               <dt>定休日</dt>
@@ -215,7 +237,7 @@
             </div>
             <div>
               <dt>住所</dt>
-              <dd>〒071-1425 北海道上川郡東川町西町１丁目１９</dd>
+              <dd>〒071-1425 北海道上川郡東川町西町1丁目19（架空の所在地）</dd>
             </div>
             <div>
               <dt>駐車場</dt>
@@ -322,6 +344,8 @@
   </script>
 
   <script src="js/footer-gallery.js"></script>
+  <script src="js/video-lazy.js"></script>
+  <script src="js/site-ui.js"></script>
 </body>
 
 </html>

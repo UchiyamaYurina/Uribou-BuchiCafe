@@ -4,12 +4,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Uribou &amp; Buchi Cafeの予約案内、よくある質問、予約・お問い合わせフォームをご用意しています。">
+  <meta name="theme-color" content="#f5efe5">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <meta name="description" content="Uribou &amp; Buchi Cafeの予約・お問い合わせフォームと、よくある質問をご用意しています。">
   <title>Reserve | ウリ坊とぶちのカフェ</title>
+  <link rel="canonical" href="https://uchiyamayurina.github.io/Uribou-BuchiCafe/reserve.html">
+  <meta property="og:title" content="Reserve | ウリ坊とぶちのカフェ">
+  <meta property="og:description" content="予約・お問い合わせフォームと、よくある質問をご用意しています。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
   <header class="site-header">
     <a class="header-logo" href="index.html" aria-label="トップへ戻る">
       <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
@@ -32,34 +40,11 @@
 
   <a class="floating-reserve" href="reserve.html#contact-form"><span>Reserve</span><small>予約・お問い合わせ</small></a>
 
-  <main>
-    <section class="page-hero reserve-page-hero">
+  <main id="main-content">
+    <section class="page-hero reserve-form-hero">
       <p class="section-kicker">Reserve</p>
-      <h1>ぶたっと一息、しに来ませんか。</h1>
-      <p>2匹のペースを大切にしながら、ゆっくり過ごせる時間をご用意しています。</p>
-
-      <figure class="reserve-eyecatch">
-        <img
-          src="img/ChatGPT_bg_15_trimmed.png"
-          alt="寄り添うウリ坊とぶちのイラスト">
-      </figure>
-    </section>
-
-    <!-- 予約について -->
-    <section class="section reserve-section">
-      <div class="section-inner narrow">
-        <div class="reserve-card">
-          <h2>ご予約について</h2>
-          <p>
-            少人数でゆっくり過ごせるよう、
-            事前予約制としています。
-          </p>
-
-          <a class="reserve-button" href="#contact-form">
-            予約する
-          </a>
-        </div>
-      </div>
+      <h1>予約・お問い合わせ</h1>
+      <p>ご予約の希望や、ご来店前の質問をこちらからお知らせください。</p>
     </section>
 
     <!-- 予約・お問い合わせフォーム -->
@@ -71,8 +56,11 @@
           予約のご希望やご来店前のご質問を入力してください。
           <span>必須</span>の付いた項目は必ず入力してください。
         </p>
+        <p id="reservation-rule" class="reservation-rule">
+          ご予約はご来店希望日の前日16:00まで、1組4名様まで承ります。
+        </p>
 
-        <form class="contact-form" action="#" method="post">
+        <form class="contact-form" action="#" method="post" aria-describedby="reservation-rule form-demo-note">
           <div class="form-grid">
             <div class="form-field">
               <label for="contact-purpose">ご用件 <span class="required-label">必須</span></label>
@@ -100,12 +88,12 @@
             </div>
 
             <div class="form-field">
-              <label for="contact-date">ご来店希望日</label>
+              <label for="contact-date">ご来店希望日 <span class="conditional-label">予約時必須</span></label>
               <input id="contact-date" name="date" type="date">
             </div>
 
             <div class="form-field">
-              <label for="contact-time">ご来店希望時間</label>
+              <label for="contact-time">ご来店希望時間 <span class="conditional-label">予約時必須</span></label>
               <select id="contact-time" name="time">
                 <option value="">選択してください</option>
                 <option value="09:00">9:00</option>
@@ -117,7 +105,7 @@
             </div>
 
             <div class="form-field">
-              <label for="contact-guests">ご利用人数</label>
+              <label for="contact-guests">ご利用人数 <span class="conditional-label">予約時必須</span></label>
               <select id="contact-guests" name="guests">
                 <option value="">選択してください</option>
                 <option value="1">1名</option>
@@ -133,7 +121,7 @@
             </div>
           </div>
 
-          <p class="form-demo-note">
+          <p id="form-demo-note" class="form-demo-note">
             このサイトは架空のため、入力内容が外部へ送信されることはありません。
           </p>
           <button class="form-submit" type="submit">入力内容を確認する</button>
@@ -174,7 +162,7 @@
 
             <div class="faq-answer">
               <p>
-                ご来店希望日の前日16時まで受け付けています。
+                ご来店希望日の前日16:00まで受け付けています。
                 空き状況によっては、ご希望に添えない場合があります。
               </p>
             </div>
@@ -200,7 +188,7 @@
 
             <div class="faq-answer">
               <p>
-                前日16時までにご連絡ください。
+                前日16:00までにご連絡ください。
                 当日の変更やキャンセルについては、
                 できるだけ早めのご連絡をお願いします。
               </p>
@@ -283,6 +271,7 @@
   <script src="js/page-motion.js"></script>
   <script src="js/reserve-form.js"></script>
   <script src="js/footer-gallery.js"></script>
+  <script src="js/site-ui.js"></script>
 </body>
 
 </html>

@@ -439,13 +439,20 @@ a {
   display: grid;
   place-items: center;
   background: var(--ivory);
-  animation: loadingFadeOut .7s ease 1s forwards;
+  animation: loadingFadeOut .45s ease .35s forwards;
 }
 
 .loading img {
   display: block;
   max-width: none;
   max-height: none;
+}
+
+.loading.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  animation: none !important;
 }
 
 @keyframes loadingFadeOut {
@@ -1449,37 +1456,37 @@ a {
 .footer-photo-01 {
   grid-column: 1 / span 3;
   grid-row: 1 / span 2;
-  background-image: url("../img/ChatGPT_cafe_01.png");
+  background-image: url("../img/ChatGPT_cafe_01.webp");
 }
 
 .footer-photo-06 {
   grid-column: 4 / span 4;
   grid-row: 1 / span 2;
-  background-image: url("../img/ChatGPT_cafe_06.png");
+  background-image: url("../img/ChatGPT_cafe_06.webp");
 }
 
 .footer-photo-03 {
   grid-column: 8 / span 2;
   grid-row: 1;
-  background-image: url("../img/ChatGPT_cafe_03.png");
+  background-image: url("../img/ChatGPT_cafe_03.webp");
 }
 
 .footer-photo-04 {
   grid-column: 10 / span 3;
   grid-row: 1;
-  background-image: url("../img/ChatGPT_cafe_04.png");
+  background-image: url("../img/ChatGPT_cafe_04.webp");
 }
 
 .footer-photo-05 {
   grid-column: 8 / span 3;
   grid-row: 2;
-  background-image: url("../img/ChatGPT_cafe_05.png");
+  background-image: url("../img/ChatGPT_cafe_05.webp");
 }
 
 .footer-photo-07 {
   grid-column: 11 / span 2;
   grid-row: 2;
-  background-image: url("../img/ChatGPT_cafe_07.png");
+  background-image: url("../img/ChatGPT_cafe_07.webp");
 }
 
 .site-footer {
@@ -3406,4 +3413,270 @@ a {
   .weekly-calendar td.weekly-closed span {
     font-size: 8px;
   }
+}
+
+/* Final loading and motion timing
+----------------------------------- */
+.piggy-card.is-visible {
+  transition-duration: 1.05s;
+}
+
+.piggy-card:nth-child(2).is-visible {
+  transition-delay: .15s;
+}
+
+.piggy-card.is-visible .piggy-label,
+.piggy-card.is-visible .piggy-overlay h3 {
+  transition-delay: .48s;
+}
+
+.piggy-card.is-visible .piggy-overlay p {
+  transition-delay: .78s;
+}
+
+.about-section .section-inner,
+.reserve-section .section-inner {
+  transition-duration: .95s;
+  transition-delay: .18s;
+}
+
+.movie-section .movie-grid > div,
+.movie-section .inline-video {
+  transition-duration: .95s;
+}
+
+.access-footstep {
+  transition-duration: .75s, .95s;
+}
+
+/* =========================================================
+   Final delivery accessibility and usability layer
+   ========================================================= */
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 12px;
+  z-index: 2000;
+  padding: 10px 16px;
+  border: 2px solid #6f4b35;
+  border-radius: 999px;
+  color: #3f2c20;
+  background: #fffdf8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid #789c72;
+  outline-offset: 4px;
+}
+
+.site-nav a[aria-current="page"],
+.footer-nav a[aria-current="page"] {
+  color: #5f7f59;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+.reservation-rule {
+  margin: 12px 0 22px;
+  padding-left: 14px;
+  border-left: 3px solid #8ca786;
+  color: #59483c;
+  line-height: 1.8;
+}
+
+.conditional-label {
+  display: inline-block;
+  margin-left: 0.35em;
+  color: #6c7f66;
+  font-size: 0.72em;
+  font-weight: 600;
+}
+
+.instagram-link small {
+  margin-left: 0.4em;
+  font-size: 0.68em;
+  font-weight: 500;
+  opacity: 0.72;
+}
+
+.about-reserve-invitation {
+  padding-bottom: 18px;
+  text-align: center;
+}
+
+.about-reserve-invitation h2 {
+  margin: 8px 0 18px;
+  color: var(--brown);
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.45;
+}
+
+.about-reserve-invitation > .section-inner > p:last-of-type {
+  line-height: 2;
+}
+
+.about-reserve-cta {
+  padding-top: 18px;
+}
+
+.reserve-form-hero {
+  padding-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  .about-reserve-invitation {
+    padding-bottom: 8px;
+  }
+
+  .about-reserve-cta {
+    padding-top: 8px;
+  }
+}
+
+.inline-video-frame,
+.featured-movie {
+  position: relative;
+}
+
+.inline-video-frame {
+  line-height: 0;
+}
+
+.inline-video-frame .inline-video {
+  display: block;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.movie-section .inline-video-frame {
+  opacity: 0;
+  transform: translateX(54px) scale(.9) rotate(2deg);
+  transition:
+    opacity .95s ease,
+    transform .95s cubic-bezier(.22, 1, .36, 1);
+}
+
+.movie-section.is-revealed .inline-video-frame {
+  opacity: 1;
+  transform: none;
+}
+
+.video-motion-toggle {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 6;
+  min-width: 104px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, .62);
+  border-radius: 999px;
+  color: #fffdf8;
+  background: rgba(74, 53, 38, .78);
+  box-shadow: 0 5px 16px rgba(43, 29, 21, .2);
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  line-height: 1.2;
+  cursor: pointer;
+  backdrop-filter: blur(7px);
+}
+
+.video-motion-toggle:hover,
+.video-motion-toggle:focus-visible,
+.video-motion-toggle[aria-pressed="false"] {
+  color: #3f2c20;
+  background: rgba(246, 249, 242, .94);
+  border-color: rgba(120, 156, 114, .72);
+}
+
+.hero-video-toggle {
+  left: 18px;
+  bottom: 18px;
+}
+
+@media (max-width: 600px) {
+  .video-motion-toggle {
+    left: 10px;
+    bottom: 10px;
+    min-width: 92px;
+    min-height: 36px;
+    padding: 7px 11px;
+    font-size: .7rem;
+  }
+}
+
+/* =========================================================
+   Z-order only: media < decoration < text and controls
+   Position, size, opacity and motion are intentionally unchanged.
+   ========================================================= */
+.page-illusts {
+  z-index: 5;
+}
+
+main :where(img, video, iframe) {
+  position: relative;
+  z-index: 4;
+}
+
+.hero-video {
+  position: absolute;
+}
+
+main :where(h1, h2, h3, p, a, button, table, form, summary, label, input, select, textarea) {
+  position: relative;
+  z-index: 6;
+}
+
+.hero-copy,
+.movie-grid > :first-child,
+.gallery-section .section-kicker,
+.gallery-section h2,
+.gallery-section .center,
+.access-section .access-grid > :first-child {
+  position: relative;
+  z-index: 6;
+}
+
+.movie-section .inline-video-frame,
+.gallery-section .gallery-image,
+.access-section .access-grid > :last-child {
+  position: relative;
+  z-index: 4;
+}
+
+.piggy-overlay,
+.video-motion-toggle {
+  z-index: 6;
+}
+
+.access-page .access-section .section-inner {
+  z-index: auto;
+}
+
+.access-page .access-footprint-trail {
+  z-index: 5;
+}
+
+.access-page .access-grid > :first-child {
+  position: relative;
+  z-index: 6;
+}
+
+.access-page .access-grid > :last-child {
+  position: relative;
+  z-index: 4;
 }

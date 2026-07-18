@@ -3,11 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="架空の子ぶたカフェ、Uribou &amp; Buchi Cafeのコンセプトと大切にしていることをご紹介します。">
+  <meta name="theme-color" content="#f5efe5">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <meta name="description" content="架空の子ぶたカフェ、Uribou &amp; Buchi Cafeのコンセプト、大切にしていること、予約案内をご紹介します。">
   <title>About | ウリ坊とぶちのカフェ</title>
+  <link rel="canonical" href="https://uchiyamayurina.github.io/Uribou-BuchiCafe/about.html">
+  <meta property="og:title" content="About | ウリ坊とぶちのカフェ">
+  <meta property="og:description" content="架空の子ぶたカフェのコンセプトと、大切にしていること、予約案内をご紹介します。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
   <header class="site-header">
     <a class="header-logo" href="index.html" aria-label="トップへ戻る">
       <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
@@ -30,7 +38,7 @@
 
   <a class="floating-reserve" href="reserve.html#contact-form"><span>Reserve</span><small>予約・お問い合わせ</small></a>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero">
       <p class="section-kicker">About</p>
       <h1>ごろごろ、のんびり、幸せ。</h1>
@@ -44,6 +52,36 @@
         <div class="soft-box">
           <h2>このカフェで大切にしていること</h2>
           <p>急がないこと。無理に触れ合わないこと。子ぶたたちのペースも、お客様のペースも大切にすること。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-reserve-invitation">
+      <div class="section-inner narrow">
+        <p class="section-kicker">Reserve</p>
+        <h2>ぶたっと一息、しに来ませんか。</h2>
+        <p>2匹のペースを大切にしながら、ゆっくり過ごせる時間をご用意しています。</p>
+
+        <figure class="reserve-eyecatch">
+          <img
+            src="img/ChatGPT_bg_15_trimmed.webp"
+            alt="寄り添うウリ坊とぶちのイラスト">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section reserve-section about-reserve-cta">
+      <div class="section-inner narrow">
+        <div class="reserve-card">
+          <h2>ご予約について</h2>
+          <p>
+            少人数でゆっくり過ごせるよう、
+            事前予約制としています。
+          </p>
+
+          <a class="reserve-button" href="reserve.html#contact-form">
+            予約する
+          </a>
         </div>
       </div>
     </section>
@@ -78,5 +116,6 @@
 
   <script src="js/page-motion.js"></script>
   <script src="js/footer-gallery.js"></script>
+  <script src="js/site-ui.js"></script>
 </body>
 </html>

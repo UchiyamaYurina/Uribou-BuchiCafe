@@ -3,11 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe5">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <meta name="description" content="ウリ坊とぶちの動画や写真を通して、架空のカフェで流れる穏やかな時間をご紹介します。">
   <title>Gallery | ウリ坊とぶちのカフェ</title>
+  <link rel="canonical" href="https://uchiyamayurina.github.io/Uribou-BuchiCafe/gallery.html">
+  <meta property="og:title" content="Gallery | ウリ坊とぶちのカフェ">
+  <meta property="og:description" content="ウリ坊とぶちの写真と動画を通して、穏やかな時間をご紹介します。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
   <header class="site-header">
     <a class="header-logo" href="index.html" aria-label="トップへ戻る">
       <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
@@ -30,7 +38,7 @@
 
   <a class="floating-reserve" href="reserve.html#contact-form"><span>Reserve</span><small>予約・お問い合わせ</small></a>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero">
       <p class="section-kicker">Gallery</p>
       <h1>のんびり流れる、カフェの時間。</h1>
@@ -40,16 +48,17 @@
     <section class="section">
       <div class="section-inner">
         <div class="featured-movie">
-          <video src="piggy-movie.mp4" autoplay muted loop playsinline preload="auto"></video>
+          <video id="gallery-piggy-video" data-src="piggy-movie.mp4" autoplay muted loop playsinline preload="none" poster="buchi-photo.jpg" aria-label="ウリ坊とぶちが店内で過ごす動画">お使いのブラウザでは動画を再生できません。</video>
+          <button class="video-motion-toggle" type="button" data-video="gallery-piggy-video" aria-controls="gallery-piggy-video">動画を再生</button>
         </div>
 
         <div class="gallery-grid gallery-page-grid">
-          <img class="gallery-image" src="uribou-photo.jpg" alt="ウリ坊">
-          <img class="gallery-image" src="buchi-photo.jpg" alt="ぶち">
-          <img class="gallery-image" src="img/ChatGPT_cafe_01.png" alt="木のぬくもりに包まれたカフェの店内">
-          <img class="gallery-image" src="img/ChatGPT_cafe_04.png" alt="木のテーブルに置かれたコーヒーとケーキ">
-          <img class="gallery-image" src="img/ChatGPT_cafe_05.png" alt="緑が見えるカフェの入口とショーケース">
-          <img class="gallery-image" src="img/ChatGPT_cafe_06.png" alt="窓辺に並ぶ植物と小さな写真立て">
+          <img class="gallery-image" src="uribou-photo.jpg" alt="ウリ坊" loading="lazy" decoding="async">
+          <img class="gallery-image" src="buchi-photo.jpg" alt="ぶち" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_cafe_01.webp" alt="木のぬくもりに包まれたカフェの店内" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_cafe_04.webp" alt="木のテーブルに置かれたコーヒーとケーキ" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_cafe_05.webp" alt="緑が見えるカフェの入口とショーケース" loading="lazy" decoding="async">
+          <img class="gallery-image" src="img/ChatGPT_cafe_06.webp" alt="窓辺に並ぶ植物と小さな写真立て" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
@@ -84,5 +93,7 @@
 
   <script src="js/page-motion.js"></script>
   <script src="js/footer-gallery.js"></script>
+  <script src="js/video-lazy.js"></script>
+  <script src="js/site-ui.js"></script>
 </body>
 </html>
