@@ -3963,3 +3963,69 @@ main :where(h1, h2, h3, p, a, button, table, form, summary, label, input, select
     overflow-wrap: anywhere;
   }
 }
+
+/* =========================================================
+   v31: Keep text in front with a very light white outline
+   ========================================================= */
+
+/* The outline is intentionally subtle. Existing stronger text shadows,
+   such as the white hero copy over video, keep their original styling. */
+main :where(h1, h2, h3, p, dt, dd, li, th, td, figcaption, summary, a) {
+  position: relative;
+  z-index: 20;
+  -webkit-text-stroke: .5px rgba(255, 255, 255, .58);
+  paint-order: stroke fill;
+  text-shadow:
+    -.45px -.45px 0 rgba(255, 255, 255, .34),
+    .45px -.45px 0 rgba(255, 255, 255, .34),
+    -.45px .45px 0 rgba(255, 255, 255, .34),
+    .45px .45px 0 rgba(255, 255, 255, .34),
+    0 0 3px rgba(255, 255, 255, .16);
+}
+
+/* These text groups use motion effects that create their own layers.
+   Give the group itself a clear foreground level as well. */
+.home-page .hero-copy,
+.home-page .calendar-inner,
+.home-page .about-section .section-inner,
+.home-page .reserve-section .section-inner,
+.page-hero,
+.faq-item,
+.access-page .access-grid > :first-child {
+  position: relative;
+  z-index: 20;
+}
+
+/* =========================================================
+   v32: Two-line label for floating Reserve
+   ========================================================= */
+.floating-reserve :where(span, small) {
+  -webkit-text-stroke: 0;
+  paint-order: normal;
+  text-shadow: none;
+}
+
+.floating-reserve small {
+  display: block;
+  white-space: normal;
+}
+
+/* =========================================================
+   v33: Keep the complete weekly calendar above decoration
+   ========================================================= */
+.home-page .calendar-section {
+  position: relative;
+  z-index: 30;
+  isolation: isolate;
+}
+
+.home-page .calendar-inner,
+.home-page .weekly-calendar-wrap,
+.home-page .weekly-calendar,
+.home-page .calendar-hours,
+.home-page .calendar-social,
+.home-page .calendar-note,
+.home-page .instagram-link {
+  position: relative;
+  z-index: 2;
+}
