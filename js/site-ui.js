@@ -88,4 +88,45 @@
     if (prefersLessMotion) video.pause();
     updateButton();
   });
+
+  const floatingReserve = document.querySelector(".floating-reserve");
+  const siteFooter = document.querySelector(".site-footer");
+
+  if (floatingReserve && siteFooter) {
+    let reserveLiftFrame = 0;
+
+    const updateReserveLift = () => {
+      reserveLiftFrame = 0;
+
+      const footerRect = siteFooter.getBoundingClientRect();
+      const buttonRect = floatingReserve.getBoundingClientRect();
+      const buttonStyle = window.getComputedStyle(floatingReserve);
+      const baseBottom = Number.parseFloat(
+        buttonStyle.getPropertyValue("--floating-reserve-bottom")
+      ) || 0;
+      const gap = window.innerWidth <= 768 ? 12 : 18;
+      const visibleFooterHeight = Math.max(0, window.innerHeight - footerRect.top);
+      const requestedLift = Math.max(0, visibleFooterHeight + gap - baseBottom);
+      const maximumLift = Math.max(
+        0,
+        window.innerHeight - baseBottom - buttonRect.height - 20
+      );
+      const lift = Math.min(requestedLift, maximumLift);
+
+      floatingReserve.style.setProperty(
+        "--floating-reserve-lift",
+        `${Math.round(lift)}px`
+      );
+    };
+
+    const requestReserveLiftUpdate = () => {
+      if (reserveLiftFrame) return;
+      reserveLiftFrame = window.requestAnimationFrame(updateReserveLift);
+    };
+
+    window.addEventListener("scroll", requestReserveLiftUpdate, { passive: true });
+    window.addEventListener("resize", requestReserveLiftUpdate);
+    window.addEventListener("load", requestReserveLiftUpdate, { once: true });
+    requestReserveLiftUpdate();
+  }
 })();
