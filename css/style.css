@@ -4029,3 +4029,177 @@ main :where(h1, h2, h3, p, dt, dd, li, th, td, figcaption, summary, a) {
   position: relative;
   z-index: 2;
 }
+
+/* =========================================================
+   v34: Keep the fixed header above every scrolling section
+   ========================================================= */
+.site-header {
+  z-index: 100;
+  isolation: isolate;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    position: relative;
+    z-index: 2;
+  }
+
+  .site-nav {
+    z-index: 1;
+  }
+}
+
+/* =========================================================
+   v35: Bring the Piggies page closer to the site's calm tone
+   ========================================================= */
+.profile-list {
+  gap: 72px;
+}
+
+.profile-card {
+  padding: 0 0 72px;
+  border: 0;
+  border-bottom: 1px solid rgba(169, 183, 158, .62);
+  border-radius: 0;
+  background: transparent;
+}
+
+.profile-card:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* On phones, keep the upper third of each TOP photo unobstructed.
+   Text and its soft gradient begin one third of the way down. */
+@media (max-width: 600px) {
+  .home-page .piggy-card {
+    padding: 0;
+  }
+
+  .home-page .piggy-overlay {
+    inset: 33.333% 0 0;
+    padding: 16px 18px 14px;
+  }
+
+  .home-page .piggy-overlay h3 {
+    margin: 4px 0 8px;
+    font-size: 25px;
+  }
+
+  .home-page .piggy-overlay p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .profile-list {
+    gap: 52px;
+  }
+
+  .profile-card {
+    padding: 0 0 52px;
+  }
+}
+
+/* =========================================================
+   v36: Halve the space between the English and Japanese names
+   ========================================================= */
+.piggy-overlay h3 {
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .home-page .piggy-overlay h3 {
+    margin-top: 2px;
+  }
+}
+
+/* =========================================================
+   v37: TOP photos and lightweight word motion for Piggies
+   ========================================================= */
+.profile-photo-frame {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  isolation: isolate;
+}
+
+.profile-photo-frame > img {
+  display: block;
+  margin: 0;
+}
+
+.profile-card.reverse .profile-photo-frame {
+  order: 2;
+}
+
+.profile-photo-word {
+  position: absolute;
+  right: auto;
+  bottom: clamp(16px, 2.8vw, 28px);
+  left: clamp(16px, 2.8vw, 28px);
+  z-index: 5;
+  color: rgba(255, 255, 255, .86);
+  font-size: clamp(38px, 7vw, 82px);
+  font-weight: 600;
+  line-height: .9;
+  letter-spacing: .12em;
+  white-space: nowrap;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, .46) 0%,
+    rgba(255, 255, 255, .98) 46%,
+    rgba(209, 225, 200, .76) 66%,
+    rgba(255, 255, 255, .46) 100%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .7px rgba(255, 255, 255, .82);
+  filter: drop-shadow(0 3px 7px rgba(65, 43, 30, .26));
+  opacity: .78;
+  pointer-events: none;
+  user-select: none;
+  animation: profile-photo-word-drift 6.8s ease-in-out infinite;
+}
+
+.profile-card.reverse .profile-photo-word {
+  animation-delay: -3.4s;
+}
+
+@keyframes profile-photo-word-drift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    transform: translate3d(-2px, 2px, 0);
+    opacity: .7;
+  }
+
+  50% {
+    background-position: 100% 50%;
+    transform: translate3d(3px, -3px, 0);
+    opacity: .96;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-card.reverse .profile-photo-frame {
+    order: 0;
+  }
+
+  .profile-photo-word {
+    bottom: 16px;
+    left: 16px;
+    font-size: clamp(34px, 12vw, 48px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-photo-word {
+    background-position: 50% 50%;
+    transform: none;
+    opacity: .84;
+    animation: none;
+  }
+}
