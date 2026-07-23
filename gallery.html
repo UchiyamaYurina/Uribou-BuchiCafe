@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5efe5">
-  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
   <meta name="description" content="ウリ坊とぶちの動画や写真を通して、架空のカフェで流れる穏やかな時間をご紹介します。">
   <title>Gallery | ウリ坊とぶちのカフェ</title>
   <link rel="canonical" href="https://uchiyamayurina.github.io/Uribou-BuchiCafe/gallery.html">
@@ -12,13 +12,16 @@
   <meta property="og:description" content="ウリ坊とぶちの写真と動画を通して、穏やかな時間をご紹介します。">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Zen+Kaku+Gothic+New:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="gallery-page">
   <a class="skip-link" href="#main-content">本文へ移動</a>
   <header class="site-header">
     <a class="header-logo" href="index.html" aria-label="トップへ戻る">
-      <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
+      <img src="img/logo.svg" alt="ウリ坊とぶちのカフェ">
     </a>
 
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
@@ -48,17 +51,20 @@
     <section class="section">
       <div class="section-inner">
         <div class="featured-movie">
-          <video id="gallery-piggy-video" data-src="piggy-movie.mp4" autoplay muted loop playsinline preload="none" poster="buchi-photo.jpg" aria-label="ウリ坊とぶちが店内で過ごす動画">お使いのブラウザでは動画を再生できません。</video>
+          <video id="gallery-piggy-video" data-src="video/piggy-movie.mp4" autoplay muted loop playsinline preload="none" poster="img/buchi-photo.jpg" aria-label="ウリ坊とぶちが店内で過ごす動画">お使いのブラウザでは動画を再生できません。</video>
           <button class="video-motion-toggle" type="button" data-video="gallery-piggy-video" aria-controls="gallery-piggy-video">動画を再生</button>
         </div>
 
         <div class="gallery-grid gallery-page-grid">
-          <img class="gallery-image" src="uribou-photo.jpg" alt="ウリ坊" loading="lazy" decoding="async">
-          <img class="gallery-image" src="buchi-photo.jpg" alt="ぶち" loading="lazy" decoding="async">
-          <img class="gallery-image" src="img/ChatGPT_cafe_01.webp" alt="木のぬくもりに包まれたカフェの店内" loading="lazy" decoding="async">
-          <img class="gallery-image" src="img/ChatGPT_cafe_04.webp" alt="木のテーブルに置かれたコーヒーとケーキ" loading="lazy" decoding="async">
-          <img class="gallery-image" src="img/ChatGPT_cafe_05.webp" alt="緑が見えるカフェの入口とショーケース" loading="lazy" decoding="async">
-          <img class="gallery-image" src="img/ChatGPT_cafe_06.webp" alt="窓辺に並ぶ植物と小さな写真立て" loading="lazy" decoding="async">
+          <a class="gallery-trigger" href="img/uribou-photo.jpg" aria-label="画像を拡大：ウリ坊" aria-haspopup="dialog"><img class="gallery-image" src="img/uribou-photo.jpg" alt="ウリ坊" loading="lazy" decoding="async"></a>
+          <a class="gallery-trigger" href="img/buchi-photo.jpg" aria-label="画像を拡大：ぶち" aria-haspopup="dialog"><img class="gallery-image" src="img/buchi-photo.jpg" alt="ぶち" loading="lazy" decoding="async"></a>
+          <a class="gallery-trigger" href="img/ChatGPT_profile_6.webp" aria-label="画像を拡大：木のボールで遊ぶウリ坊" aria-haspopup="dialog"><img class="gallery-image" src="img/ChatGPT_profile_6.webp" alt="木のボールで遊ぶウリ坊" loading="lazy" decoding="async"></a>
+          <a class="gallery-trigger" href="img/ChatGPT_profile_2.webp" aria-label="画像を拡大：店内でこちらを見つめるぶち" aria-haspopup="dialog"><img class="gallery-image" src="img/ChatGPT_profile_2.webp" alt="店内でこちらを見つめるぶち" loading="lazy" decoding="async"></a>
+          <a class="gallery-trigger" href="img/ChatGPT_profile_5.webp" aria-label="画像を拡大：ふかふかのラグで眠るウリ坊" aria-haspopup="dialog"><img class="gallery-image" src="img/ChatGPT_profile_5.webp" alt="ふかふかのラグで眠るウリ坊" loading="lazy" decoding="async"></a>
+          <a class="gallery-trigger" href="img/ChatGPT_cafe_01.webp" aria-label="画像を拡大：木のぬくもりに包まれたカフェの店内" aria-haspopup="dialog"><img class="gallery-image" src="img/ChatGPT_cafe_01.webp" alt="木のぬくもりに包まれたカフェの店内" loading="lazy" decoding="async"></a>
+          <a class="gallery-trigger" href="img/ChatGPT_cafe_04.webp" aria-label="画像を拡大：木のテーブルに置かれたコーヒーとケーキ" aria-haspopup="dialog"><img class="gallery-image" src="img/ChatGPT_cafe_04.webp" alt="木のテーブルに置かれたコーヒーとケーキ" loading="lazy" decoding="async"></a>
+          <a class="gallery-trigger" href="img/ChatGPT_cafe_05.webp" aria-label="画像を拡大：緑が見えるカフェの入口とショーケース" aria-haspopup="dialog"><img class="gallery-image" src="img/ChatGPT_cafe_05.webp" alt="緑が見えるカフェの入口とショーケース" loading="lazy" decoding="async"></a>
+          <a class="gallery-trigger" href="img/ChatGPT_cafe_06.webp" aria-label="画像を拡大：窓辺に並ぶ植物と小さな写真立て" aria-haspopup="dialog"><img class="gallery-image" src="img/ChatGPT_cafe_06.webp" alt="窓辺に並ぶ植物と小さな写真立て" loading="lazy" decoding="async"></a>
         </div>
       </div>
     </section>
@@ -76,7 +82,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <a class="footer-brand" href="index.html" aria-label="トップページへ戻る">
-        <img src="logo.svg" alt="ウリ坊とぶちのカフェ">
+        <img src="img/logo.svg" alt="ウリ坊とぶちのカフェ">
         <span>Uribou &amp; Buchi Cafe</span>
       </a>
       <nav class="footer-nav" aria-label="フッターメニュー">
@@ -94,6 +100,7 @@
   <script src="js/page-motion.js"></script>
   <script src="js/footer-gallery.js"></script>
   <script src="js/video-lazy.js"></script>
+  <script src="js/gallery-lightbox.js"></script>
   <script src="js/site-ui.js"></script>
 </body>
 </html>
