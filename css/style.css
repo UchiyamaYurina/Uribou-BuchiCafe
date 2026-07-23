@@ -5700,3 +5700,852 @@ b {
   background: var(--brown);
   color: var(--ivory);
 }
+
+/* =========================================================
+   v64: Movie inside Gallery and a soft mobile top edge
+   ========================================================= */
+.gallery-movie {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(64px, 8vw, 108px);
+  padding-top: clamp(36px, 5vw, 64px);
+}
+
+.gallery-movie::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 12% 0 -18%;
+  background:
+    url("../img/illustAC__1441581.png")
+    center bottom / min(980px, 88%) auto no-repeat;
+  opacity: .08;
+  filter: saturate(.68) sepia(.08);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .gallery-movie {
+    margin-top: 58px;
+    padding-top: 38px;
+  }
+
+  .gallery-movie::before {
+    inset: 8% -20px -12%;
+    background-size: 720px auto;
+    background-position: center calc(100% + 110px);
+    opacity: .34;
+  }
+
+  /*
+   * The 5px straight mark was the clipped top edge of the two glass shapes.
+   * Fade their upper ends before they meet the viewport edge.
+   */
+  .site-header {
+    border: 0;
+    outline: 0;
+  }
+
+  .header-logo::before,
+  .menu-button::before {
+    -webkit-mask-image:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 20%,
+        #000 36%,
+        #000 100%
+      );
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 20%,
+        #000 36%,
+        #000 100%
+      );
+  }
+}
+
+/* =========================================================
+   v65: One Gallery heading and a top-flush mobile hero
+   ========================================================= */
+.gallery-intro {
+  margin: 12px 0 0;
+}
+
+.gallery-video {
+  width: min(900px, 100%);
+  margin: clamp(48px, 7vw, 82px) auto 0;
+}
+
+@media (max-width: 768px) {
+  /* Keep the moving image flush with the physical top edge of the screen. */
+  .hero {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .hero-video {
+    inset: -2px 0 auto;
+    width: 100%;
+    height: calc(100% + 2px);
+  }
+
+  /*
+   * The header itself stays transparent. The two local shapes no longer
+   * touch the screen edge and no blur or mask can create a straight strip.
+   */
+  .site-header {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .header-logo::before {
+    inset: -12px -20px -22px -15px;
+  }
+
+  .menu-button::before {
+    inset: -12px -11px -9px;
+  }
+
+  .header-logo::before,
+  .menu-button::before {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .gallery-video {
+    margin-top: 42px;
+  }
+}
+
+/* =========================================================
+   v66: Lift the sixth Gallery photo and sharpen media corners
+   ========================================================= */
+.gallery-section.is-revealed .gallery-grid > :nth-child(6) {
+  opacity: 1;
+  transform: translateY(-16px) scale(1) rotate(1.2deg);
+  transition-delay: .68s;
+}
+
+/* Keep content media softly rounded, but less card-like than before. */
+.piggy-visual,
+.piggy-photo,
+.profile-photo-frame,
+.profile-card > img,
+.gallery-trigger,
+.gallery-image,
+.gallery-item,
+.inline-video,
+.featured-movie video,
+.image-lightbox__image,
+.map-placeholder,
+.map-embed,
+.map-embed iframe {
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .gallery-section.is-revealed .gallery-grid > :nth-child(6) {
+    transform: translateY(-24px) scale(1) rotate(1deg);
+  }
+
+  .gallery-video {
+    position: relative;
+    z-index: 1;
+    margin-top: 54px;
+  }
+}
+
+/* =========================================================
+   v67: Align the sixth Gallery photo and clear Gallery video
+   ========================================================= */
+/* The sixth item now uses the same vertical baseline as the other photos. */
+.gallery-section.is-revealed .gallery-grid > :nth-child(6) {
+  transform: translateY(0) scale(1) rotate(1deg);
+}
+
+/* Keep the Gallery videos clear while preserving the existing color balance. */
+.gallery-video .inline-video,
+.gallery-page .featured-movie video {
+  filter: saturate(1) contrast(1.01);
+}
+
+@media (max-width: 768px) {
+  .gallery-section.is-revealed .gallery-grid > :nth-child(6) {
+    transform: translateY(0) scale(1) rotate(1deg);
+  }
+}
+
+/* =========================================================
+   v68: Organic flowing shapes for TOP content media
+   ========================================================= */
+/* Keep the full-screen hero and decorative illustrations unchanged. */
+.home-page .piggy-visual,
+.home-page .gallery-trigger,
+.home-page .gallery-video,
+.home-page .map-embed,
+.home-page .piggy-photo,
+.home-page .gallery-image,
+.home-page .gallery-video .inline-video,
+.home-page .map-embed iframe {
+  border-radius: 58% 42% 55% 45% / 46% 57% 43% 54%;
+}
+
+.home-page .piggy-visual,
+.home-page .gallery-trigger,
+.home-page .gallery-video,
+.home-page .map-embed {
+  overflow: hidden;
+}
+
+/* =========================================================
+   v69: Compact rectangular mobile header
+   ========================================================= */
+@media (max-width: 768px) {
+  /* Use one PC-like rectangular panel at 80% of the screen width. */
+  .site-header {
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 64px;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 0;
+    background: rgba(250, 247, 242, .34);
+    -webkit-backdrop-filter: blur(14px) saturate(.95);
+    backdrop-filter: blur(14px) saturate(.95);
+    box-shadow: 0 1px 0 rgba(90, 63, 47, .06);
+  }
+
+  /* Remove the former separate flowing backgrounds behind the logo and menu. */
+  .header-logo::before,
+  .menu-button::before {
+    display: none;
+    content: none;
+  }
+
+  /* Keep the slide-down menu directly below the compact header. */
+  .site-nav {
+    top: 64px;
+  }
+}
+
+/* =========================================================
+   v70: Full-width mobile header with reduced height
+   ========================================================= */
+@media (max-width: 768px) {
+  /* Width remains 100%; only the vertical size is about 80% of the former 76px. */
+  .site-header {
+    left: 0;
+    width: 100%;
+    height: 60px;
+    padding: 6px 20px;
+  }
+
+  .site-nav {
+    top: 60px;
+  }
+}
+
+/* =========================================================
+   v71: Instagram-style visual demo on the TOP calendar
+   ========================================================= */
+.home-page .calendar-social {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.instagram-demo {
+  display: grid;
+  width: min(520px, 100%);
+  gap: 12px;
+  padding: 14px;
+  color: var(--brown);
+  background: rgba(250, 247, 242, .54);
+  border: 1px solid rgba(90, 63, 47, .18);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(75, 50, 34, .08);
+  text-decoration: none;
+  transition:
+    color .3s ease,
+    border-color .3s ease,
+    background-color .3s ease,
+    transform .3s ease;
+}
+
+.instagram-demo__head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.instagram-demo__icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 25px;
+  height: 25px;
+  border: 2px solid currentColor;
+  border-radius: 7px;
+}
+
+.instagram-demo__icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.instagram-demo__icon::after {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 50%;
+  content: "";
+}
+
+.instagram-demo__title {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 17px;
+  letter-spacing: .04em;
+}
+
+.instagram-demo__head small {
+  margin-left: auto;
+  color: var(--brown-soft);
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+
+.instagram-demo__photos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.instagram-demo__photo {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: var(--ivory);
+  border-radius: 2px;
+}
+
+.instagram-demo__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.instagram-demo:hover,
+.instagram-demo:focus-visible {
+  color: #718665;
+  background: rgba(250, 247, 242, .72);
+  border-color: rgba(113, 134, 101, .52);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.instagram-demo:hover .instagram-demo__photo img,
+.instagram-demo:focus-visible .instagram-demo__photo img {
+  transform: scale(1.045);
+}
+
+.instagram-demo:focus-visible {
+  outline: 3px solid rgba(169, 183, 158, .55);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .instagram-demo {
+    padding: 11px;
+  }
+
+  .instagram-demo__head {
+    gap: 7px;
+  }
+
+  .instagram-demo__title {
+    font-size: 15px;
+  }
+
+  .instagram-demo__head small {
+    font-size: 9px;
+  }
+
+  .instagram-demo__photos {
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .instagram-demo,
+  .instagram-demo__photo img {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   v72: Lighter and vertically shorter header
+   ========================================================= */
+.site-header {
+  background: rgba(250, 247, 242, .2);
+  -webkit-backdrop-filter: blur(10px) saturate(.92);
+  backdrop-filter: blur(10px) saturate(.92);
+  box-shadow: 0 1px 0 rgba(90, 63, 47, .035);
+}
+
+@media (min-width: 769px) {
+  /* 70px × 80% = 56px. The logo follows the same compact balance. */
+  .site-header {
+    height: 56px;
+    padding: 4px 29px;
+  }
+
+  .header-logo {
+    width: clamp(84px, 9vw, 122px);
+  }
+}
+
+@media (max-width: 768px) {
+  /* 60px × 80% = 48px. Keep the full-width rectangular background. */
+  .site-header {
+    left: 0;
+    width: 100%;
+    height: 48px;
+    padding: 2px 20px;
+    background: rgba(250, 247, 242, .2);
+  }
+
+  .site-nav {
+    top: 48px;
+  }
+}
+
+/* =========================================================
+   v73: Video-responsive glass header and smaller mobile logo
+   ========================================================= */
+/*
+ * The TOP header keeps only a faint ivory layer. The backdrop filter uses
+ * the pixels beneath it, so the header naturally follows each video frame
+ * without running color-analysis JavaScript.
+ */
+.home-page .site-header {
+  background: rgba(250, 247, 242, .1);
+  -webkit-backdrop-filter: blur(9px) saturate(.78) brightness(1.04);
+  backdrop-filter: blur(9px) saturate(.78) brightness(1.04);
+  box-shadow: 0 1px 0 rgba(90, 63, 47, .025);
+}
+
+@media (max-width: 768px) {
+  .home-page .site-header {
+    background: rgba(250, 247, 242, .1);
+  }
+
+  /* Smaller than the desktop maximum and compact enough for the 48px header. */
+  .header-logo {
+    width: 82px;
+  }
+}
+
+/* =========================================================
+   v78: Keep v73 unchanged and remove only header blur
+   ========================================================= */
+.site-header,
+.home-page .site-header {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* =========================================================
+   v79: Slightly stronger TOP header background
+   ========================================================= */
+.home-page .site-header {
+  background: rgba(250, 247, 242, .16);
+}
+
+/* =========================================================
+   v80: Align TOP section copy with the Concept section
+   ========================================================= */
+.home-page .piggies-section .section-kicker,
+.home-page .piggies-section .section-inner > h2,
+.home-page .gallery-section .section-kicker,
+.home-page .gallery-section .section-inner > h2,
+.home-page .gallery-section .gallery-intro,
+.home-page .access-grid > div:first-child > .section-kicker,
+.home-page .access-grid > div:first-child > h2 {
+  text-align: center;
+}
+
+.home-page .gallery-section .gallery-intro {
+  width: min(760px, 100%);
+  margin: 12px auto 0;
+}
+
+.home-page .access-grid > div:first-child > .text-link {
+  display: block;
+  width: max-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 769px) {
+  /*
+   * Bring the Access text start toward the same 760px reading area as
+   * Concept, while leaving the map and the two-column layout unchanged.
+   */
+  .home-page .access-grid > div:first-child {
+    padding-left: clamp(0px, calc((100vw - 824px) / 2), 80px);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page .gallery-section .gallery-intro {
+    width: calc(100% - 40px);
+  }
+
+  .home-page .access-grid > div:first-child {
+    padding-left: 0;
+  }
+}
+
+/* =========================================================
+   v81: Keep the TOP Google map above decorative artwork
+   ========================================================= */
+/*
+ * Release the Access section's isolated stacking group. Its content layer can
+ * then sit above the page-wide illustrations while the section background and
+ * decorative pseudo-elements remain behind it.
+ */
+.home-page .access-section {
+  isolation: auto;
+}
+
+.home-page .access-section::before,
+.home-page .access-section::after {
+  z-index: 1;
+}
+
+.home-page .access-section > .section-inner {
+  position: relative;
+  z-index: 6;
+}
+
+.home-page .access-grid > .map-embed,
+.home-page .access-grid > .map-embed iframe {
+  position: relative;
+  z-index: 20;
+}
+
+/* =========================================================
+   v82: Smaller weekly calendar marks and clear closed day
+   ========================================================= */
+.weekly-calendar td {
+  height: 48px;
+  padding-top: 8px;
+  vertical-align: top;
+}
+
+.weekly-calendar td span,
+.weekly-calendar td.weekly-closed span {
+  width: 24px;
+  height: 24px;
+}
+
+.weekly-calendar td.weekly-closed {
+  padding-top: 4px;
+  text-align: center;
+}
+
+.weekly-calendar td.weekly-closed .weekly-closed-mark {
+  display: grid;
+  width: 24px;
+  height: 20px;
+  margin: 0 auto;
+  place-items: center;
+  color: var(--brown);
+  background: transparent;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.weekly-calendar td.weekly-closed small {
+  display: block;
+  margin-top: 1px;
+  color: var(--brown);
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .weekly-calendar td {
+    height: 44px;
+    padding-top: 7px;
+  }
+
+  .weekly-calendar td span,
+  .weekly-calendar td.weekly-closed span {
+    width: 20px;
+    height: 20px;
+  }
+
+  .weekly-calendar td.weekly-closed {
+    padding-top: 3px;
+  }
+
+  .weekly-calendar td.weekly-closed .weekly-closed-mark {
+    width: 20px;
+    height: 17px;
+    font-size: 12px;
+  }
+
+  .weekly-calendar td.weekly-closed small {
+    margin-top: 0;
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   v83: Start the berry wreath below the TOP "カフェ情報" heading
+   ========================================================= */
+/* The old wreath belonged to the Reserve section and reached upward.
+   It is now anchored immediately after the Access heading instead. */
+.home-page .reserve-section::before {
+  content: none;
+}
+
+.home-page .access-wreath-anchor {
+  position: relative;
+  z-index: -1;
+  display: block;
+  height: 0;
+  pointer-events: none;
+}
+
+.home-page .access-wreath-anchor::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -250px;
+  width: clamp(650px, 68vw, 900px);
+  aspect-ratio: 4 / 3;
+  background: url("../img/illustAC__1582917.png") center / contain no-repeat;
+  opacity: .86;
+}
+
+.home-page .access-grid .info-list {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .home-page .access-wreath-anchor::before {
+    left: -235px;
+    width: 570px;
+  }
+}
+
+/* =========================================================
+   v84: Align the open-day circles and closed-day dash
+   ========================================================= */
+/* The dash uses the same invisible square as each circle.
+   Matching the square and cell padding keeps their centers level. */
+.weekly-calendar td.weekly-closed {
+  padding-top: 8px;
+}
+
+.weekly-calendar td.weekly-closed .weekly-closed-mark {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .weekly-calendar td.weekly-closed {
+    padding-top: 7px;
+  }
+
+  .weekly-calendar td.weekly-closed .weekly-closed-mark {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* =========================================================
+   v85: Independent wreath motion and soft hero text shadows
+   ========================================================= */
+/* The wreath is now a direct child of the Access section.
+   It no longer inherits the entrance and floating motion of the text column. */
+.home-page .access-wreath-anchor {
+  position: absolute;
+  z-index: 1;
+  top: clamp(176px, 19vw, 220px);
+  left: 50%;
+  display: block;
+  width: min(1040px, calc(100% - 56px));
+  height: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.home-page .access-wreath-anchor::before {
+  transform-origin: center;
+  animation: access-wreath-drift 9.4s ease-in-out infinite;
+}
+
+@keyframes access-wreath-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(1deg);
+  }
+}
+
+/* Remove the former fine outline and use only blurred brown shadows.
+   The softer edges remain readable without looking sharply traced. */
+.home-page .hero-copy :where(.hero-label, h1, .hero-sub) {
+  -webkit-text-stroke: 0;
+  paint-order: normal;
+  text-shadow:
+    0 3px 8px rgba(55, 36, 24, .62),
+    0 10px 28px rgba(40, 26, 18, .28);
+}
+
+@media (max-width: 768px) {
+  .home-page .access-wreath-anchor {
+    top: 176px;
+    width: calc(100% - 44px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .access-wreath-anchor::before {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   v86: Lighter TOP berry wreath
+   ========================================================= */
+.home-page .access-wreath-anchor::before {
+  opacity: .68;
+}
+
+/* =========================================================
+   v87: Anchor the coffee grinder between Piggies and Gallery
+   ========================================================= */
+/* The grinder now belongs to the Gallery section instead of using
+   a fixed distance from the top of the whole page. */
+.home-page .gallery-section > .illust05 {
+  top: -150px;
+  left: -80px;
+  width: 300px;
+  z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .home-page .gallery-section > .illust05 {
+    top: -95px;
+    left: -50px;
+    width: 190px;
+  }
+}
+
+/* =========================================================
+   v88: Wider TOP map and an always-visible external map link
+   ========================================================= */
+/* Extend the TOP map beyond the right side of its column.
+   The page edge may crop the far-right portion as part of the layout. */
+.home-page .access-grid > .map-embed {
+  width: calc(100% + max(120px, calc(50vw - 472px)));
+  max-width: none;
+  height: clamp(380px, 42vw, 520px);
+  aspect-ratio: auto;
+  justify-self: start;
+}
+
+.map-embed {
+  position: relative;
+}
+
+.map-external-link {
+  position: absolute;
+  z-index: 30;
+  bottom: 18px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 9px 20px;
+  border: 1px solid rgba(255, 255, 255, .48);
+  border-radius: 999px;
+  color: var(--white);
+  background: rgba(110, 132, 99, .92);
+  box-shadow: 0 8px 22px rgba(55, 36, 24, .2);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  white-space: nowrap;
+  text-decoration: none;
+  -webkit-text-stroke: 0;
+  paint-order: normal;
+  text-shadow: none;
+  transform: translateX(-50%);
+  transition:
+    background-color .25s ease,
+    box-shadow .25s ease,
+    transform .25s ease;
+}
+
+.map-external-link:hover,
+.map-external-link:focus-visible {
+  color: var(--white);
+  background: rgba(90, 63, 47, .94);
+  box-shadow: 0 11px 26px rgba(55, 36, 24, .28);
+  transform: translate(-50%, -2px);
+}
+
+.map-external-link:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, .88);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .home-page .access-grid > .map-embed {
+    width: calc(100% + 56px);
+    max-width: none;
+    height: clamp(320px, 90vw, 380px);
+  }
+
+  .map-external-link {
+    bottom: 14px;
+    min-height: 40px;
+    padding: 8px 17px;
+    font-size: 12px;
+  }
+}
