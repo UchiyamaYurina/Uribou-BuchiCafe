@@ -6549,3 +6549,53 @@ b {
     font-size: 12px;
   }
 }
+
+/* =========================================================
+   v89: Keep the floating Reserve button inside mobile screens
+   ========================================================= */
+/* The previous negative right value intentionally cropped the button,
+   but some mobile browsers treated that area as extra page width.
+   Keep the design and vertical motion while removing horizontal overflow. */
+@keyframes floating-reserve-blob-mobile {
+  0%,
+  100% {
+    translate: 0 0;
+    border-radius: 58% 42% 55% 45% / 46% 57% 43% 54%;
+  }
+
+  34% {
+    translate: 0 -7px;
+    border-radius: 43% 57% 46% 54% / 58% 42% 60% 40%;
+  }
+
+  68% {
+    translate: 0 -3px;
+    border-radius: 54% 46% 63% 37% / 40% 55% 45% 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  .floating-reserve {
+    right: calc(12px + env(safe-area-inset-right, 0px));
+    left: auto;
+    width: min(150px, calc(100vw - 24px));
+    height: min(150px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vw - 24px);
+    box-sizing: border-box;
+    animation-name: floating-reserve-blob-mobile;
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .floating-reserve {
+    animation: none;
+  }
+}
