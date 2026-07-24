@@ -5421,6 +5421,24 @@ b {
   }
 }
 
+/* =========================================================
+   v104: Stack the English and Japanese piggy names on mobile
+   ========================================================= */
+@media (max-width: 768px) {
+  .piggies-page .profile-photo-word {
+    position: relative;
+    align-self: flex-start;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    margin: 0 0 4px;
+    font-size: clamp(30px, 10vw, 42px);
+    line-height: 1;
+    letter-spacing: 0.08em;
+  }
+}
+
 @media (max-width: 768px) {
   .header-logo {
     position: relative;
@@ -6597,5 +6615,847 @@ b {
 @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
   .floating-reserve {
     animation: none;
+  }
+}
+
+/* =========================================================
+   v91: Unify the two large watercolor decorations at 40%
+   ========================================================= */
+/* Keep the very pale Gallery movie background at its original opacity.
+   Only the large flower meadow and berry-wreath decorations are adjusted. */
+.home-page .reserve-section::after,
+.about-page .about-reserve-cta::after,
+.piggies-page .piggies-section::after,
+.gallery-page main > .section:last-of-type::before,
+.access-page .access-section::before,
+.reserve-page .visit-notice-section::after {
+  opacity: .4;
+}
+
+.home-page .reserve-section::before,
+.about-page .about-reserve-invitation::before,
+.piggies-page .piggies-section::before,
+.reserve-page .faq-section::before,
+.home-page .access-wreath-anchor::before {
+  opacity: .4;
+}
+
+/* =========================================================
+   v92: Larger grinder and a softer background coffee-bean layer
+   ========================================================= */
+/* Keep the grinder's visual center while increasing it to 120%. */
+.home-page .gallery-section > .illust05 {
+  top: -180px;
+  left: -110px;
+  width: 360px;
+}
+
+/* ChatGPT_bg _04 uses its own back layer so photos, video and text
+   are always displayed in front of it. */
+.page-illusts-back {
+  z-index: 1;
+}
+
+.page-illusts-back .illust06 {
+  opacity: .4;
+}
+
+@media (max-width: 768px) {
+  .home-page .gallery-section > .illust05 {
+    top: -114px;
+    left: -69px;
+    width: 228px;
+  }
+}
+
+/* =========================================================
+   v93: Blue-flower motion, left-cropped Gallery video,
+   and a scroll-safe cropped mobile Reserve button
+   ========================================================= */
+/* Give illustAC__1357304 the same quiet movement as the other artwork. */
+@keyframes blue-flower-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(4deg);
+  }
+
+  50% {
+    transform: translate3d(-8px, -14px, 0) rotate(6deg);
+  }
+}
+
+.home-page .about-section::after,
+.about-page main > .section:nth-of-type(2)::after {
+  transform-origin: 50% 75%;
+  animation: blue-flower-drift 9.6s ease-in-out infinite;
+}
+
+/* Keep the video's right side aligned with the content and extend only
+   the left side beyond the viewport, balancing the right-cropped MAP. */
+.home-page .gallery-video {
+  width: calc(100% + max(64px, calc(50vw - 520px)));
+  max-width: none;
+  margin-right: 0;
+  margin-left: min(-64px, calc(520px - 50vw));
+}
+
+@media (max-width: 768px) {
+  .home-page .gallery-video {
+    width: calc(100% + 36px);
+    max-width: none;
+    margin-right: 0;
+    margin-left: -36px;
+  }
+
+  /* The button's layout box remains inside the viewport. The clipped,
+     translated paint creates a 14px crop without widening the page. */
+  .floating-reserve {
+    --floating-reserve-mobile-crop: 14px;
+    right: 0;
+    -webkit-clip-path: inset(0 var(--floating-reserve-mobile-crop) 0 0);
+    clip-path: inset(0 var(--floating-reserve-mobile-crop) 0 0);
+    transform: translateX(var(--floating-reserve-mobile-crop));
+  }
+
+  .floating-reserve:hover,
+  .floating-reserve:focus-visible {
+    transform: translate(var(--floating-reserve-mobile-crop), -3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .about-section::after,
+  .about-page main > .section:nth-of-type(2)::after {
+    animation: none;
+    transform: rotate(4deg);
+  }
+}
+
+/* =========================================================
+   v94: Shared finish across pages and an ivory Reserve outline
+   ========================================================= */
+/* The ivory edge separates the glass-green button from photos and video.
+   The same finish applies to every page that shows the floating button. */
+.floating-reserve,
+.floating-reserve:hover,
+.floating-reserve:focus-visible {
+  border-color: var(--ivory);
+}
+
+/* The TOP berry wreath already drifts independently. Give the same asset
+   the same quiet behavior on About, Piggies and Reserve. */
+@keyframes shared-berry-wreath-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(1deg);
+  }
+}
+
+.about-page .about-reserve-invitation::before,
+.piggies-page .piggies-section::before,
+.reserve-page .faq-section::before {
+  transform-origin: center;
+  animation: shared-berry-wreath-drift 9.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .about-reserve-invitation::before,
+  .piggies-page .piggies-section::before,
+  .reserve-page .faq-section::before {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* =========================================================
+   v95: Anchor the ABOUT blue flower after the introduction
+   ========================================================= */
+/* Remove the former section-corner version so the artwork appears once. */
+.about-page main > .section:nth-of-type(2)::after {
+  content: none;
+}
+
+/* This image sits directly after the introductory sentence in the HTML.
+   A slight right crop keeps the established watercolor composition. */
+.about-page .page-hero .about-hero-blue-flower {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: clamp(200px, 24vw, 330px);
+  max-width: none;
+  margin-top: clamp(14px, 2.4vw, 26px);
+  margin-right: clamp(-78px, -4vw, -28px);
+  margin-bottom: clamp(-130px, -10vw, -86px);
+  margin-left: auto;
+  opacity: .88;
+  filter: none;
+  transform-origin: 50% 75%;
+  animation: blue-flower-drift 9.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .page-hero .about-hero-blue-flower {
+    animation: none;
+    transform: rotate(4deg);
+  }
+}
+
+/* =========================================================
+   v96: Use the ABOUT blue flower as a true background layer
+   ========================================================= */
+.about-page .page-hero {
+  overflow: hidden;
+}
+
+.about-page .page-hero .about-hero-blue-flower {
+  position: absolute;
+  z-index: 0;
+  right: clamp(-78px, -4vw, -30px);
+  bottom: clamp(-32px, -2vw, -14px);
+  width: clamp(220px, 24vw, 330px);
+  margin: 0;
+}
+
+/* =========================================================
+   v97: Keep the Piggies wreath visible and match the TOP tone
+   ========================================================= */
+/* The page hero uses z-index: 20. Raise the following Piggies section
+   one step above it so the wreath remains visible across the boundary. */
+.piggies-page .piggies-section {
+  z-index: 21;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.piggies-page .piggies-section::after {
+  z-index: 0;
+}
+
+.piggies-page .piggies-section::before {
+  z-index: 2;
+}
+
+.piggies-page .piggies-section > .section-inner {
+  z-index: 4;
+}
+
+/* Use the same photo-first rhythm as the TOP Piggies cards. */
+.piggies-page .profile-list {
+  gap: clamp(72px, 9vw, 116px);
+}
+
+.piggies-page .profile-card {
+  grid-template-columns: minmax(0, 1.12fr) minmax(250px, .88fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  padding-bottom: clamp(72px, 9vw, 108px);
+}
+
+.piggies-page .profile-photo-frame {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 58% 42% 55% 45% / 46% 57% 43% 54%;
+  box-shadow: 0 18px 44px rgba(70, 44, 28, .13);
+}
+
+.piggies-page .profile-card.reverse .profile-photo-frame {
+  border-radius: 42% 58% 45% 55% / 57% 43% 56% 44%;
+}
+
+.piggies-page .profile-photo-frame > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 0;
+  filter: saturate(.92);
+}
+
+.piggies-page .profile-photo-caption {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(24px, 4vw, 38px);
+  text-align: left;
+  background: linear-gradient(
+    to top,
+    rgba(43, 29, 21, .58),
+    rgba(43, 29, 21, 0) 78%
+  );
+}
+
+.piggies-page .profile-photo-caption h2 {
+  align-self: flex-start;
+  margin: 6px 0 16px;
+  padding: 0 .2em .08em;
+  color: var(--white);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 400;
+  letter-spacing: .12em;
+  background: linear-gradient(
+    transparent 52%,
+    rgba(159, 177, 143, .86) 52%
+  );
+  text-shadow: 0 2px 10px rgba(30, 18, 12, .5);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.piggies-page .profile-photo-caption p {
+  max-width: 390px;
+  margin: 0;
+  color: var(--brown);
+  font-size: 15px;
+  line-height: 2.05;
+}
+
+/* Keep the animated English word, but use it as a lighter upper accent. */
+@keyframes profile-photo-word-top-drift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    transform: translate3d(-2px, 2px, 0);
+    opacity: .34;
+  }
+
+  50% {
+    background-position: 100% 50%;
+    transform: translate3d(3px, -3px, 0);
+    opacity: .58;
+  }
+}
+
+.piggies-page .profile-photo-word {
+  z-index: 4;
+  top: clamp(20px, 3vw, 32px);
+  right: auto;
+  bottom: auto;
+  left: clamp(20px, 3vw, 32px);
+  font-size: clamp(38px, 6vw, 72px);
+  animation-name: profile-photo-word-top-drift;
+}
+
+/* The existing character illustrations remain beside the detail list. */
+.piggies-page .profile-details {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+}
+
+.piggies-page .piggy-name {
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(169, 183, 158, .62);
+}
+
+.piggies-page .piggy-name h3 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: .06em;
+}
+
+.piggies-page .piggy-name-illust {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(76px, 9vw, 112px);
+  height: auto;
+  aspect-ratio: auto;
+  margin: 0;
+  object-fit: contain;
+  border-radius: 0;
+  filter: none;
+}
+
+.piggies-page .simple-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.piggies-page .simple-list li {
+  padding: 9px 0 9px 16px;
+  border-left: 3px solid rgba(159, 177, 143, .84);
+  color: var(--brown-soft);
+  background: rgba(255, 250, 244, .58);
+}
+
+@media (max-width: 768px) {
+  .piggies-page .profile-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 72px;
+  }
+
+  .piggies-page .profile-card.reverse .profile-photo-frame {
+    order: 0;
+  }
+
+  .piggies-page .profile-details {
+    order: 1;
+  }
+
+  .piggies-page .profile-photo-caption {
+    inset: 33.333% 0 0;
+    padding: 16px 18px 14px;
+  }
+
+  .piggies-page .profile-photo-caption h2 {
+    margin: 4px 0 8px;
+    font-size: 25px;
+  }
+
+  .piggies-page .profile-photo-caption p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .piggies-page .profile-photo-word {
+    top: 16px;
+    left: 16px;
+    font-size: clamp(34px, 12vw, 48px);
+  }
+
+  .piggies-page .piggy-name {
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piggies-page .profile-photo-word {
+    background-position: 50% 50%;
+    transform: none;
+    opacity: .46;
+    animation: none;
+  }
+}
+
+/* =========================================================
+   v98: Keep captions above, not inside, the flowing photo clip
+   ========================================================= */
+/* TOP: only the photo and gradient are clipped. */
+.home-page .piggy-visual {
+  overflow: visible;
+  border-radius: 0;
+}
+
+.home-page .piggy-photo-clip {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 58% 42% 55% 45% / 46% 57% 43% 54%;
+  isolation: isolate;
+}
+
+.home-page .piggy-card:nth-child(2) .piggy-photo-clip {
+  border-radius: 42% 58% 45% 55% / 57% 43% 56% 44%;
+}
+
+.home-page .piggy-photo-clip::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(43, 29, 21, .58),
+    rgba(43, 29, 21, 0) 78%
+  );
+  pointer-events: none;
+}
+
+.home-page .piggy-photo-clip .piggy-photo {
+  position: relative;
+  z-index: 1;
+  border-radius: 0;
+}
+
+.home-page .piggy-overlay {
+  z-index: 4;
+  overflow: visible;
+  background: none;
+  pointer-events: none;
+}
+
+/* PIGGIES page: use an inner clip so the caption remains independent. */
+.piggies-page .profile-photo-frame {
+  overflow: visible;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.piggies-page .profile-photo-clip {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 58% 42% 55% 45% / 46% 57% 43% 54%;
+  box-shadow: 0 18px 44px rgba(70, 44, 28, .13);
+  isolation: isolate;
+}
+
+.piggies-page .profile-card.reverse .profile-photo-clip {
+  border-radius: 42% 58% 45% 55% / 57% 43% 56% 44%;
+}
+
+.piggies-page .profile-photo-clip::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(43, 29, 21, .58),
+    rgba(43, 29, 21, 0) 78%
+  );
+  pointer-events: none;
+}
+
+.piggies-page .profile-photo-clip > img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.piggies-page .profile-photo-caption {
+  z-index: 6;
+  overflow: visible;
+  background: none;
+  pointer-events: none;
+}
+
+.piggies-page .profile-photo-word {
+  z-index: 4;
+}
+
+/* =========================================================
+   v99: Use one underline style for every navigation item
+   ========================================================= */
+/* The current Piggies link previously used the font's text underline,
+   while hover links used a CSS bar. Use the same 2px bar for both. */
+.site-nav a[aria-current="page"] {
+  text-decoration: none;
+}
+
+.site-nav a::after,
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after,
+.site-nav a[aria-current="page"]::after {
+  height: 2px;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after,
+.site-nav a[aria-current="page"]::after {
+  width: 100%;
+}
+
+/* =========================================================
+   v100: Unified mobile navigation and subpage illustration layers
+   ========================================================= */
+/* On mobile, every navigation item uses the same full-width 2px rule.
+   This avoids differences caused by the length or font shape of a label. */
+@media (max-width: 768px) {
+  .site-nav a {
+    border-bottom: 2px solid rgba(90, 63, 47, 0.12);
+  }
+
+  .site-nav a::after {
+    display: none;
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus-visible {
+    border-bottom-color: var(--brown);
+  }
+
+  .site-nav a[aria-current="page"] {
+    border-bottom-color: #5f7f59;
+    text-decoration: none;
+  }
+}
+
+/* Gallery and Access use the same layer order as the other finished pages:
+   section background -> illustration -> text/media. */
+.gallery-page main > .section:last-of-type,
+.access-page .access-section {
+  z-index: 21;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.gallery-page main > .section:last-of-type::before,
+.access-page .access-section::before {
+  z-index: 0;
+}
+
+.gallery-page main > .section:nth-of-type(2)::after,
+.access-page .access-section::after {
+  z-index: 1;
+  opacity: 0.4;
+}
+
+.subpage-decor-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.subpage-decor {
+  position: absolute;
+  display: block;
+  max-width: none;
+  opacity: 0.4;
+  pointer-events: none;
+  animation: subpage-decor-drift 9s ease-in-out infinite;
+}
+
+.gallery-decor-leaf {
+  top: -90px;
+  right: -55px;
+  width: clamp(170px, 18vw, 260px);
+  transform: rotate(10deg);
+}
+
+.gallery-decor-beans {
+  top: clamp(420px, 55vw, 720px);
+  left: -55px;
+  width: clamp(150px, 16vw, 230px);
+  opacity: 0.34;
+  transform: rotate(-12deg);
+  animation-delay: -4.2s;
+}
+
+.access-decor-grinder {
+  top: -120px;
+  left: -80px;
+  width: clamp(230px, 24vw, 340px);
+  opacity: 0.34;
+  transform: rotate(-4deg);
+}
+
+.access-decor-leaf {
+  right: -55px;
+  bottom: -80px;
+  width: clamp(170px, 18vw, 250px);
+  opacity: 0.38;
+  transform: rotate(12deg);
+  animation-delay: -4.5s;
+}
+
+.gallery-page main > .section:last-of-type > .section-inner {
+  position: relative;
+  z-index: 5;
+}
+
+.access-page .access-section > .section-inner {
+  position: relative;
+  z-index: 6;
+}
+
+.access-page .access-footprint-trail {
+  z-index: 5;
+}
+
+@keyframes subpage-decor-drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-decor-leaf {
+    top: -58px;
+    right: -45px;
+    width: 145px;
+  }
+
+  .gallery-decor-beans {
+    top: 62%;
+    left: -42px;
+    width: 130px;
+  }
+
+  .access-decor-grinder {
+    top: -86px;
+    left: -55px;
+    width: 210px;
+  }
+
+  .access-decor-leaf {
+    right: -44px;
+    bottom: -55px;
+    width: 145px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subpage-decor {
+    animation: none;
+    translate: 0 0;
+  }
+}
+
+/* =========================================================
+   v101: Show the red berry illustration at full opacity
+   ========================================================= */
+.home-page .gallery-section::after,
+.home-page .access-section::after,
+.gallery-page main > .section:nth-of-type(2)::after,
+.access-page .access-section::after {
+  opacity: 1;
+}
+
+/* =========================================================
+   v102: Consistent labels, tighter ABOUT opening and free piggy words
+   ========================================================= */
+/* The two opening ABOUT paragraphs belong to adjacent sections.
+   Reduce their combined vertical spacing from about 170px to 96px. */
+.about-page .page-hero {
+  padding-bottom: 48px;
+}
+
+.about-page .page-hero + .section {
+  padding-top: 48px;
+}
+
+/* URIBOU and BUCHI now sit outside the photo clipping element.
+   Keep them above both the flowing photo shape and its caption. */
+.piggies-page .profile-photo-word {
+  z-index: 7;
+}
+
+@media (max-width: 768px) {
+  .about-page .page-hero {
+    padding-bottom: 36px;
+  }
+
+  .about-page .page-hero + .section {
+    padding-top: 40px;
+  }
+}
+
+/* =========================================================
+   v103: Larger PC coffee art and piggy-name decoration
+   ========================================================= */
+@media (min-width: 769px) {
+  /* Keep the grinder's center near the Piggies/Gallery boundary. */
+  .home-page .gallery-section > .illust05 {
+    top: -240px;
+    left: -170px;
+    width: 480px;
+  }
+
+  /* Enlarge the TOP coffee beans while keeping them partly cropped. */
+  .page-illusts-back .illust06 {
+    right: -65px;
+    width: 330px;
+  }
+
+  /* Gallery coffee beans: larger, but still behind photos and video. */
+  .gallery-decor-beans {
+    left: -100px;
+    width: clamp(250px, 23vw, 320px);
+  }
+
+  /* Access grinder: larger, with its visual center kept in place. */
+  .access-decor-grinder {
+    top: -180px;
+    left: -140px;
+    width: clamp(360px, 33vw, 460px);
+  }
+
+  /* Let the name decoration overlap and slightly escape the photo edge. */
+  .piggies-page .profile-photo-word {
+    top: clamp(6px, 1vw, 14px);
+    left: clamp(-28px, -1.5vw, -14px);
+    font-size: clamp(72px, 8vw, 112px);
+    letter-spacing: 0.08em;
+  }
+}
+
+/* =========================================================
+   v105: Match both profile photos and name stacks
+   ========================================================= */
+/* Use the same English/Japanese name stack on PC and mobile. */
+.piggies-page .profile-photo-word {
+  position: relative;
+  align-self: flex-start;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  margin: 0 0 6px;
+  font-size: clamp(36px, 4.5vw, 56px);
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+/* The reversed card needs its larger photo column on the right.
+   This gives Uribou and Buchi the same visible photo size. */
+@media (min-width: 769px) {
+  .piggies-page .profile-card.reverse {
+    grid-template-columns: minmax(250px, .88fr) minmax(0, 1.12fr);
+  }
+}
+
+/* Keep profile headings and character art above nearby decorations. */
+.piggies-page .profile-details {
+  z-index: 8;
+}
+
+.piggies-page .piggy-name {
+  position: relative;
+  z-index: 9;
+  overflow: visible;
+}
+
+.piggies-page .piggy-name h3 {
+  position: relative;
+  z-index: 9;
+  font-family: "Fraunces", "Times New Roman", serif;
+  letter-spacing: 0.04em;
+}
+
+.piggies-page .piggy-name-illust {
+  position: relative;
+  z-index: 10;
+  width: clamp(110px, 12vw, 150px);
+}
+
+@media (max-width: 768px) {
+  .piggies-page .profile-photo-word {
+    margin-bottom: 4px;
+    font-size: clamp(30px, 10vw, 42px);
+  }
+
+  .piggies-page .piggy-name-illust {
+    width: clamp(100px, 34vw, 130px);
   }
 }
